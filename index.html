@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BizSnap - Direktori UMKM & Perusahaan</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- ========================================== -->
-  <!-- [SEKSI 1] HEADER, SEARCH & FILTER COMPACT -->
+    <!-- ========================================== -->
+  <!-- [SEKSI 1] HEADER & DROPDOWN COMPACT (FA)   -->
   <!-- ========================================== -->
   <header class="navbar">
     <div class="brand-box">
@@ -19,60 +20,80 @@
       </div>
       <p class="brand-sub">Direktori UMKM & Perusahaan</p>
     </div>
-    
-    <!-- Search Bar -->
+
+    <!-- Search Box dengan Icon Vector -->
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Cari nama tempat yang ingin dituju...">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Cari nama tempat yang ingin dituju...">
     </div>
 
     <!-- Tombol Filter Ringkas -->
     <div class="filter-trigger-bar">
-      <!-- Trigger Kategori -->
+      <!-- Dropdown Kategori -->
       <div class="dropdown-wrapper">
         <button class="btn-dropdown" onclick="toggleMenu('catMenu', event)">
-          📂 <span id="labelCategory">Pilih Kategori</span> <span class="arrow">▼</span>
+          <span class="btn-content">
+            <i class="fa-solid fa-layer-group icon-left" id="iconCategory"></i>
+            <span id="labelCategory">Pilih Kategori</span>
+          </span>
+          <i class="fa-solid fa-chevron-down arrow"></i>
         </button>
-        <!-- Menu Pop-up Kategori -->
         <div class="dropdown-pop" id="catMenu">
-          <button class="pop-item active" onclick="selectCategory('all', 'Semua Kategori', this)">Semua Kategori</button>
-          <button class="pop-item" onclick="selectCategory('Cafe', '☕ Cafe', this)">☕ Cafe</button>
+          <button class="pop-item active" onclick="selectCategory('all', 'Semua Kategori', 'fa-solid fa-border-all', this)">
+            <i class="fa-solid fa-border-all pop-icon"></i> Semua Kategori
+          </button>
+          <button class="pop-item" onclick="selectCategory('Cafe', 'Cafe', 'fa-solid fa-mug-hot', this)">
+            <i class="fa-solid fa-mug-hot pop-icon"></i> Cafe
+          </button>
         </div>
       </div>
 
-      <!-- Trigger Lokasi -->
+      <!-- Dropdown Lokasi -->
       <div class="dropdown-wrapper">
         <button class="btn-dropdown" onclick="toggleMenu('locMenu', event)">
-          📍 <span id="labelLocation">Pilih Lokasi</span> <span class="arrow">▼</span>
+          <span class="btn-content">
+            <i class="fa-solid fa-location-dot icon-left" id="iconLocation"></i>
+            <span id="labelLocation">Pilih Lokasi</span>
+          </span>
+          <i class="fa-solid fa-chevron-down arrow"></i>
         </button>
-        <!-- Menu Pop-up Lokasi -->
         <div class="dropdown-pop" id="locMenu">
           <div id="provView">
-            <button class="pop-item active" onclick="selectLocation('all', 'all', 'Semua Lokasi', this)">📍 Semua Lokasi</button>
+            <button class="pop-item active" onclick="selectLocation('all', 'all', 'Semua Lokasi', 'fa-solid fa-globe', this)">
+              <i class="fa-solid fa-globe pop-icon"></i> Semua Lokasi
+            </button>
             <button class="pop-item flex-between" onclick="openCities('Jawa Timur')">
-              Jawa Timur <span class="arrow-right">▶</span>
+              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Timur</span>
+              <i class="fa-solid fa-chevron-right arrow-right"></i>
             </button>
             <button class="pop-item flex-between" onclick="openCities('Jawa Tengah')">
-              Jawa Tengah <span class="arrow-right">▶</span>
+              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Tengah</span>
+              <i class="fa-solid fa-chevron-right arrow-right"></i>
             </button>
             <button class="pop-item flex-between" onclick="openCities('Jawa Barat')">
-              Jawa Barat <span class="arrow-right">▶</span>
+              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Barat</span>
+              <i class="fa-solid fa-chevron-right arrow-right"></i>
             </button>
           </div>
 
           <div id="cityView-Jatim" class="city-group" style="display: none;">
-            <button class="pop-item btn-back" onclick="backToProv()">⬅️ Kembali ke Provinsi</button>
+            <button class="pop-item btn-back" onclick="backToProv()">
+              <i class="fa-solid fa-arrow-left pop-icon"></i> Kembali ke Provinsi
+            </button>
             <div class="pop-divider">Kota di Jawa Timur:</div>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jawa Timur', this)">Semua Jawa Timur</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Malang', 'Malang', this)">Malang</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Surabaya', 'Surabaya', this)">Surabaya</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Batu', 'Batu', this)">Batu</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Pasuruan', 'Pasuruan', this)">Pasuruan</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jawa Timur', 'fa-solid fa-map-location-dot', this)">
+              <i class="fa-solid fa-map-location-dot pop-icon"></i> Semua Jawa Timur
+            </button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Malang', 'Malang', 'fa-solid fa-location-dot', this)">Malang</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Surabaya', 'Surabaya', 'fa-solid fa-location-dot', this)">Surabaya</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Batu', 'Batu', 'fa-solid fa-location-dot', this)">Batu</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Pasuruan', 'Pasuruan', 'fa-solid fa-location-dot', this)">Pasuruan</button>
           </div>
         </div>
       </div>
     </div>
   </header>
-
+  
   <!-- ========================================== -->
   <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
   <!-- ========================================== -->
