@@ -15,84 +15,108 @@ body {
 }
 
 /* ========================================== */
-/* [BLOK 2] HEADER, PENCARIAN & FILTER        */
+/* [BLOK 2] HEADER & DROPDOWN COMPACT         */
 /* ========================================== */
-.navbar {
-  position: sticky;
-  top: 0;
-  background: rgba(11, 15, 25, 0.95);
-  backdrop-filter: blur(12px);
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 100;
+.filter-trigger-bar {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.brand-title {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #38bdf8;
-  letter-spacing: 1px;
-}
-
-.brand-sub {
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
-
-.search-box input {
+  gap: 10px;
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: #1e293b;
-  color: #fff;
-  font-size: 0.9rem;
-  outline: none;
 }
 
-.search-box input:focus {
-  border-color: #38bdf8;
+.dropdown-wrapper {
+  flex: 1;
+  position: relative;
 }
 
-.category-pills {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-}
-.category-pills::-webkit-scrollbar { display: none; }
-
-.pill {
+.btn-dropdown {
+  width: 100%;
+  padding: 10px 14px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.82rem;
   font-weight: 700;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.pill.active {
-  background: #38bdf8;
-  color: #0f172a;
+.btn-dropdown:active {
+  background: rgba(56, 189, 248, 0.2);
   border-color: #38bdf8;
 }
- .pill-city {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.2);
-  font-size: 0.75rem;
+
+/* Menu Melayang / Pop-up Animasi */
+.dropdown-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  max-height: 260px;
+  overflow-y: auto;
+  
+  /* Animasi Smooth Slide Down */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.pill-city.active {
+.dropdown-pop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pop-item {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pop-item:hover, .pop-item.active {
   background: #38bdf8;
   color: #0f172a;
 }
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.05);
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.pop-divider {
+  font-size: 0.7rem;
+  color: #64748b;
+  padding: 4px 12px;
+  font-weight: 800;
+}
+
   
 /* ========================================== */
 /* [BLOK 3] LAYOUT GRID KARTU                 */
