@@ -8,8 +8,8 @@
 </head>
 <body>
 
-    <!-- ========================================== -->
-  <!-- [SEKSI 1] HEADER, SEARCH & FILTER CATEGORY -->
+  <!-- ========================================== -->
+  <!-- [SEKSI 1] HEADER, SEARCH & FILTER COMPACT -->
   <!-- ========================================== -->
   <header class="navbar">
     <div class="brand-box">
@@ -17,24 +17,58 @@
       <p class="brand-sub">Direktori Cafe & Tempat Ngopi Terpercaya</p>
     </div>
 
-    <!-- Pencarian (Bisa ketik nama cafe atau nama kota) -->
+    <!-- Search Bar -->
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Cari nama cafe atau kota (misal: Malang)...">
+      <input type="text" id="searchInput" placeholder="🔍 Cari nama cafe atau kota...">
     </div>
 
-    <!-- Filter Kategori Utama -->
-    <div class="category-pills">
-      <button class="pill active" onclick="filterCategory('all', this)">Semua Kategori</button>
-      <button class="pill" onclick="filterCategory('Cafe', this)">☕ Cafe</button>
-    </div>
+    <!-- Tombol Filter Ringkas -->
+    <div class="filter-trigger-bar">
+      <!-- Trigger Kategori -->
+      <div class="dropdown-wrapper">
+        <button class="btn-dropdown" onclick="toggleMenu('catMenu')">
+          📂 <span id="labelCategory">Pilih Kategori</span> <span class="arrow">▼</span>
+        </button>
+        <!-- Menu Pop-up Kategori -->
+        <div class="dropdown-pop" id="catMenu">
+          <button class="pop-item active" onclick="selectCategory('all', 'Semua Kategori', this)">Semua Kategori</button>
+          <button class="pop-item" onclick="selectCategory('Cafe', '☕ Cafe', this)">☕ Cafe</button>
+        </div>
+      </div>
 
-    <!-- Filter Kota (BARU) -->
-    <div class="category-pills city-pills">
-      <button class="pill pill-city active" onclick="filterCity('all', this)">📍 Semua Kota</button>
-      <button class="pill pill-city" onclick="filterCity('Malang', this)">Malang</button>
-      <button class="pill pill-city" onclick="filterCity('Surabaya', this)">Surabaya</button>
-      <button class="pill pill-city" onclick="filterCity('Batu', this)">Batu</button>
-      <button class="pill pill-city" onclick="filterCity('Pasuruan', this)">Pasuruan</button>
+      <!-- Trigger Lokasi -->
+      <div class="dropdown-wrapper">
+        <button class="btn-dropdown" onclick="toggleMenu('locMenu')">
+          📍 <span id="labelLocation">Pilih Lokasi</span> <span class="arrow">▼</span>
+        </button>
+        <!-- Menu Pop-up Lokasi (Berjenjang) -->
+        <div class="dropdown-pop" id="locMenu">
+          <!-- Level 1: Pilih Provinsi -->
+          <div id="provView">
+            <button class="pop-item active" onclick="selectLocation('all', 'all', 'Semua Lokasi', this)">📍 Semua Lokasi</button>
+            <button class="pop-item flex-between" onclick="openCities('Jawa Timur')">
+              Jawa Timur <span class="arrow-right">▶</span>
+            </button>
+            <button class="pop-item flex-between" onclick="openCities('Jawa Tengah')">
+              Jawa Tengah <span class="arrow-right">▶</span>
+            </button>
+            <button class="pop-item flex-between" onclick="openCities('Jawa Barat')">
+              Jawa Barat <span class="arrow-right">▶</span>
+            </button>
+          </div>
+
+          <!-- Level 2: Kota di Jawa Timur (Default tersembunyi) -->
+          <div id="cityView-Jatim" class="city-group" style="display: none;">
+            <button class="pop-item btn-back" onclick="backToProv()">⬅️ Kembali ke Provinsi</button>
+            <div class="pop-divider">Kota di Jawa Timur:</div>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jatim', this)">Semua Jawa Timur</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Malang', 'Malang', this)">Malang</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Surabaya', 'Surabaya', this)">Surabaya</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Batu', 'Batu', this)">Batu</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Pasuruan', 'Pasuruan', this)">Pasuruan</button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
   
