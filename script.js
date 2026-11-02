@@ -1,5 +1,6 @@
 // ==========================================
 // [BLOK 1] DATA UMKM & STATE UTAMA
+// Katalog Cafe Terpercaya Malang (Total 8 Tempat)
 // ==========================================
 const umkmData = [
   {
@@ -85,10 +86,9 @@ const umkmData = [
       "Suasana dingin pegunungan bikin betah nongkrong.",
       "Harga makanan terjangkau untuk view setingkat ini."
     ]
-  }
-];
-
-     id: 5,
+  },
+  {
+    id: 5,
     name: "Robucca Coffee",
     category: "Cafe",
     province: "Jawa Timur",
