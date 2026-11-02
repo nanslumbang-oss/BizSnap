@@ -17,6 +17,52 @@ body {
 /* ========================================== */
 /* [BLOK 2] HEADER & DROPDOWN COMPACT         */
 /* ========================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(11, 15, 25, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #38bdf8;
+  letter-spacing: 1px;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* Style Kolom Pencarian */
+.search-box {
+  width: 100%;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1e293b;
+  color: #ffffff;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-box input:focus {
+  border-color: #38bdf8;
+}
+
+/* Style Tombol Dropdown Filter */
 .filter-trigger-bar {
   display: flex;
   gap: 10px;
@@ -117,7 +163,6 @@ body {
   font-weight: 800;
 }
 
-  
 /* ========================================== */
 /* [BLOK 3] LAYOUT GRID KARTU                 */
 /* ========================================== */
@@ -171,8 +216,13 @@ body {
   flex: 1;
 }
 
+.card-badge-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .card-badge {
-  align-self: flex-start;
   background: rgba(56, 189, 248, 0.15);
   color: #38bdf8;
   font-size: 0.7rem;
@@ -180,6 +230,12 @@ body {
   padding: 4px 10px;
   border-radius: 6px;
   text-transform: uppercase;
+}
+
+.card-location {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  font-weight: 700;
 }
 
 .card-title {
@@ -234,36 +290,18 @@ body {
   background: rgba(239, 68, 68, 0.15);
 }
 
-.card-location {
-  font-size: 0.75rem;
-  color: #38bdf8;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-
 /* ========================================== */
 /* [BLOK 5] RESPONSIVE DESKTOP (MEDIA QUERIES)*/
-/* Aturan khusus kalau dibuka di layar laptop/PC */
 /* ========================================== */
 @media (min-width: 768px) {
-  
-  /* 1. Bikin ukuran judul BIZSNAP lebih besar di PC */
   .brand-title {
     font-size: 1.8rem;
   }
-
-  /* 2. Bikin banner gambar kartu sedikit lebih tinggi di PC */
   .card-banner {
     height: 180px;
   }
-
-  /* 3. Bikin padding container lebih renggang di PC */
   .container {
     padding: 0 24px;
     margin: 30px auto;
   }
-
 }
