@@ -1,4 +1,7 @@
-// Data UMKM
+// ==========================================
+// [BLOK 1] DATA UMKM & STATE UTAMA
+// Tambah/edit data bisnis kamu di sini
+// ==========================================
 const umkmData = [
   {
     id: 1,
@@ -7,7 +10,6 @@ const umkmData = [
     desc: "Layanan cuci sepatu & baju premium 24 jam kilat, wangi, & terpercaya.",
     bgImage: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80",
     whatsapp: "628123456789",
-    website: "https://laundry-god.github.io",
     likes: 124
   },
   {
@@ -17,7 +19,6 @@ const umkmData = [
     desc: "Racikan kopi robusta lokal khas pegunungan Bromo dengan cita rasa otentik.",
     bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
     whatsapp: "628123456789",
-    website: "#",
     likes: 89
   },
   {
@@ -27,132 +28,123 @@ const umkmData = [
     desc: "Jasa pembuatan aset visual 3D, desain logo, dan pengembangan web interaktif.",
     bgImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     whatsapp: "628123456789",
-    website: "#",
     likes: 210
+  },
+  {
+    id: 4,
+    name: "Batik Modern Co",
+    category: "Fashion",
+    desc: "Pakaian batik kasual pria dan wanita bahan adem cocok buat harian.",
+    bgImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80",
+    whatsapp: "628123456789",
+    likes: 56
   }
 ];
 
-let currentFilter = 'all';
-const container = document.getElementById('snapContainer');
-const counter = document.getElementById('cardCounter');
+let currentCategory = 'all';
+let searchQuery = '';
 
-// Ambil data like tersimpan di HP
-function getSavedLikes() {
-  return JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
-}
 
-// Render Kartu ke Layar
+// ==========================================
+// [BLOK 2] PENGAMBILAN ELEMEN DOM
+// ==========================================
+const gridContainer = document.getElementById('gridContainer');
+const searchInput = document.getElementById('searchInput');
+
+
+// ==========================================
+// [BLOK 3] RENDER KARTU KE LAYAR GRID
+// ==========================================
 function renderCards() {
-  container.innerHTML = '';
+  gridContainer.innerHTML = '';
   const savedLikes = getSavedLikes();
 
-  const filteredData = currentFilter === 'all' 
-    ? umkmData 
-    : umkmData.filter(item => item.category === currentFilter);
+  // Filter Kategori + Search Keyword
+  const filtered = umkmData.filter(item => {
+    const matchCategory = currentCategory === 'all' || item.category === currentCategory;
+    const matchSearch = item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery);
+    return matchCategory && matchSearch;
+  });
 
-  if (filteredData.length === 0) {
-    container.innerHTML = `<div style="height:100vh; display:flex; align-items:center; justify-content:center; color:#94a3b8;">Belum ada UMKM di kategori ini</div>`;
+  if (filtered.length === 0) {
+    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada UMKM yang ditemukan.</p>`;
     return;
   }
 
-  filteredData.forEach((item) => {
+  filtered.forEach(item => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
 
     const card = document.createElement('div');
-    card.className = 'snap-card';
-    card.style.backgroundImage = `url('${item.bgImage}')`;
-    
+    card.className = 'umkm-card';
     card.innerHTML = `
-      <div class="card-overlay"></div>
-      
-      <!-- Tombol Samping (Like & Share) -->
-      <div class="side-actions">
-        <button class="action-icon-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
-          ❤️ <span class="count-label" id="like-count-${item.id}">${totalLikes}</span>
-        </button>
-        <button class="action-icon-btn" onclick="shareCard('${item.name}', '${item.desc}')">
-          🔗 <span class="count-label">Share</span>
-        </button>
-      </div>
-
-      <div class="card-content">
-        <span class="badge-cat">${item.category}</span>
-        <h2 class="company-name">${item.name}</h2>
-        <p class="company-desc">${item.desc}</p>
-        <div class="action-buttons">
-          <a href="https://wa.me/${item.whatsapp}" target="_blank" class="btn-action btn-wa">💬 WhatsApp</a>
-          ${item.website !== '#' ? `<a href="${item.website}" target="_blank" class="btn-action btn-web">🌐 Website</a>` : ''}
+      <img src="${item.bgImage}" alt="${item.name}" class="card-banner">
+      <div class="card-body">
+        <span class="card-badge">${item.category}</span>
+        <h3 class="card-title">${item.name}</h3>
+        <p class="card-desc">${item.desc}</p>
+        <div class="card-footer">
+          <a href="https://wa.me/${item.whatsapp}" target="_blank" class="btn-wa">💬 WhatsApp</a>
+          <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
+            ❤️ ${totalLikes}
+          </button>
         </div>
       </div>
     `;
-    container.appendChild(card);
+    gridContainer.appendChild(card);
   });
 
-  initCardObserver();
-  updateCounter(filteredData.length);
+  // Panggil pendeteksi animasi scroll
+  initScrollAnimation();
 }
 
-// Fitur Filter Kategori
-function filterCategory(cat) {
-  currentFilter = cat;
-  document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-  renderCards();
-  container.scrollTop = 0; // Scroll balik ke kartu pertama
-}
 
-// Fitur Like (LocalStorage)
-function toggleLike(id) {
-  const savedLikes = getSavedLikes();
-  savedLikes[id] = !savedLikes[id];
-  localStorage.setItem('bizsnap_likes', JSON.stringify(savedLikes));
-  renderCards(); // Refresh UI
-}
-
-// Fitur Share
-function shareCard(title, text) {
-  if (navigator.share) {
-    navigator.share({
-      title: title,
-      text: `${title} - ${text}`,
-      url: window.location.href,
-    }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(window.location.href);
-    alert("Link berhasil disalin ke papan klip!");
-  }
-}
-
-// Observer untuk Animasi Fade In
-function initCardObserver() {
-  const cards = document.querySelectorAll('.snap-card');
+// ==========================================
+// [BLOK 4] ANIMASI SCROLL (OBSERVER EFEK MUNCUL)
+// ==========================================
+function initScrollAnimation() {
+  const cards = document.querySelectorAll('.umkm-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      } else {
-        entry.target.classList.remove('active');
+        entry.target.classList.add('visible'); // Tambah kelas visible pas kelihatan
       }
     });
-  }, { threshold: 0.6 });
+  }, { threshold: 0.15 });
 
   cards.forEach(card => observer.observe(card));
 }
 
-// Counter Kartu (1 / N)
-function updateCounter(total) {
-  counter.innerText = `1 / ${total}`;
+
+// ==========================================
+// [BLOK 5] FITUR INTERAKSI (FILTER, SEARCH, LIKE)
+// ==========================================
+function filterCategory(category, btnElement) {
+  currentCategory = category;
+  document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+  renderCards();
 }
 
-container.addEventListener('scroll', () => {
-  const cardHeight = container.clientHeight;
-  const filteredCount = currentFilter === 'all' 
-    ? umkmData.length 
-    : umkmData.filter(item => item.category === currentFilter).length;
+function getSavedLikes() {
+  return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
+}
 
-  const currentIndex = Math.round(container.scrollTop / cardHeight) + 1;
-  counter.innerText = `${currentIndex} / ${filteredCount}`;
+function toggleLike(id) {
+  const savedLikes = getSavedLikes();
+  savedLikes[id] = !savedLikes[id];
+  localStorage.setItem('bizsnap_grid_likes', JSON.stringify(savedLikes));
+  renderCards();
+}
+
+// Pencarian Live
+searchInput.addEventListener('input', (e) => {
+  searchQuery = e.target.value.toLowerCase();
+  renderCards();
 });
 
+
+// ==========================================
+// [BLOK 6] JALANKAN PERTAMA KALI
+// ==========================================
 renderCards();
