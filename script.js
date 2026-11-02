@@ -107,14 +107,16 @@ function initScrollAnimation() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible'); // Tambah kelas visible pas kelihatan
+        entry.target.classList.add('visible');
+      } else {
+        // Hapus class biar animasinya main lagi tiap kali di-scroll bolak-balik
+        entry.target.classList.remove('visible'); 
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.1 }); // Turunkan ke 0.1 biar langsung dapet trigger di HP
 
   cards.forEach(card => observer.observe(card));
 }
-
 
 // ==========================================
 // [BLOK 5] FITUR INTERAKSI (FILTER, SEARCH, LIKE)
