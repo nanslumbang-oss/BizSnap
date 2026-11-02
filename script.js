@@ -88,6 +88,91 @@ const umkmData = [
   }
 ];
 
+     id: 5,
+    name: "Robucca Coffee",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Malang",
+    rating: "⭐ 4.7 (1.800+ Ulasan)",
+    address: "Jl. Sunandar Priyo Sudarmo No.75, Blimbing, Kota Malang",
+    desc: "Cafe ala Jepang industrial modern di kawasan tenang Malang dengan area indoor & outdoor estetik.",
+    bgImage: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Robucca+Coffee+Malang",
+    webUrl: "https://instagram.com/robucca.id",
+    likes: 380,
+    reviews: [
+      "Konsep cafe ala Jepang yang simpel dan sangat estetik.",
+      "Matcha latte dan kopi spesialitasnya mantap banget.",
+      "Suasana tenang, pas buat yang cari ketenangan pas nugas.",
+      "Spot outdoor-nya adem dan banyak pepohonan.",
+      "Pelayanan cepat dan mas-mas baristanya ramah."
+    ]
+  },
+  {
+    id: 6,
+    name: "Labore Coffee Eatery",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Malang",
+    rating: "⭐ 4.6 (3.100+ Ulasan)",
+    address: "Jl. Soekarno Hatta No.25, Mojolangu, Lowokwaru, Kota Malang",
+    desc: "Salah satu pioneer coffee eatery estetik di jalur pusat kuliner Soekarno Hatta Malang.",
+    bgImage: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Labore+Coffee+Eatery+Malang",
+    webUrl: "https://instagram.com/laborecoffeeeatery",
+    likes: 410,
+    reviews: [
+      "Menu makanan beratnya enak-enak, gak cuma jualan tempat.",
+      "Vibes cafe-nya mewah tapi harga tetep masuk akal.",
+      "Kopi dan pastry-nya selalu fresh tiap hari.",
+      "Lokasi strategis di tengah kota Malang.",
+      "Tempatnya bersih dan nyaman buat meeting santai."
+    ]
+  },
+  {
+    id: 7,
+    name: "DW Coffee Shop",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Malang",
+    rating: "⭐ 4.6 (2.400+ Ulasan)",
+    address: "Jl. Bogor No.11, Sumbersari, Lowokwaru, Kota Malang",
+    desc: "Kedai kopi legendaris favorit mahasiswa UM & UB dengan suasana homey dan rimbun.",
+    bgImage: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=DW+Coffee+Shop+Malang",
+    webUrl: "https://instagram.com/dwcoffeeshop",
+    likes: 295,
+    reviews: [
+      "Vibes rumah tua yang adem dan penuh tanaman hijau.",
+      "Harga kopi sangat mahasiswa, cocok buat kantong hemat.",
+      "Tempat langganan nugas dari jaman maba.",
+      "Wifi stabil dan colokan melimpah di setiap sudut.",
+      "Manual brew-nya juara banget rasanya."
+    ]
+  },
+  {
+    id: 8,
+    name: "Gartenhaus Co",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Malang",
+    rating: "⭐ 4.6 (1.900+ Ulasan)",
+    address: "Jl. Kenanga Indah No.1, Jatimulyo, Lowokwaru, Kota Malang",
+    desc: "Cafe tersembunyi bernuansa kebun tropis (hidden gem) yang super sejuk & asri.",
+    bgImage: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Gartenhaus+Co+Malang",
+    webUrl: "https://instagram.com/gartenhausco",
+    likes: 365,
+    reviews: [
+      "Bener-bener hidden gem di Malang, serasa di hutan kecil.",
+      "Banyak hewan peliharaan lucu dan tanaman hias unik.",
+      "Suasana dingin dan sepi, pas buat refreshing.",
+      "Kopi dan camilannya enak-enak.",
+      "Spot foto outdoor-nya bagus banget dari segala sisi."
+    ]
+  }
+];
+
 let currentCategory = 'all';
 let currentProvince = 'all';
 let currentCity = 'all';
