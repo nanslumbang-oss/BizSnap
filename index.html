@@ -8,27 +8,36 @@
 </head>
 <body>
 
-  <!-- ========================================== -->
+    <!-- ========================================== -->
   <!-- [SEKSI 1] HEADER, SEARCH & FILTER CATEGORY -->
   <!-- ========================================== -->
   <header class="navbar">
     <div class="brand-box">
       <h1 class="brand-title">BIZSNAP</h1>
-      <p class="brand-sub">Direktori UMKM & Perusahaan</p>
+      <p class="brand-sub">Direktori Cafe & Tempat Ngopi Terpercaya</p>
     </div>
 
-    <!-- Pencarian -->
+    <!-- Pencarian (Bisa ketik nama cafe atau nama kota) -->
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Cari UMKM atau produk...">
+      <input type="text" id="searchInput" placeholder="🔍 Cari nama cafe atau kota (misal: Malang)...">
     </div>
 
-    <!-- Filter Kategori -->
+    <!-- Filter Kategori Utama -->
     <div class="category-pills">
-      <button class="pill active" onclick="filterCategory('all', this)">Semua</button>
-      <button class="pill" onclick="filterCategory('Cafe', this)">Cafe</button>
+      <button class="pill active" onclick="filterCategory('all', this)">Semua Kategori</button>
+      <button class="pill" onclick="filterCategory('Cafe', this)">☕ Cafe</button>
     </div>
-    
+
+    <!-- Filter Kota (BARU) -->
+    <div class="category-pills city-pills">
+      <button class="pill pill-city active" onclick="filterCity('all', this)">📍 Semua Kota</button>
+      <button class="pill pill-city" onclick="filterCity('Malang', this)">Malang</button>
+      <button class="pill pill-city" onclick="filterCity('Surabaya', this)">Surabaya</button>
+      <button class="pill pill-city" onclick="filterCity('Batu', this)">Batu</button>
+      <button class="pill pill-city" onclick="filterCity('Pasuruan', this)">Pasuruan</button>
+    </div>
   </header>
+  
 
   <!-- ========================================== -->
   <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
