@@ -54,6 +54,28 @@ function renderCards() {
     `;
     container.appendChild(card);
   });
+
+  // Jalankan pendeteksi animasi setelah kartu selesai dimasukkan
+  initCardObserver();
+}
+
+// Deteksi kartu mana yang lagi nge-snap di tengah layar
+function initCardObserver() {
+  const cards = document.querySelectorAll('.snap-card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Tambahkan class .active saat kartu masuk layar
+        entry.target.classList.add('active');
+      } else {
+        // Hapus class .active saat lewat biar kalau di-scroll ulang animasinya main lagi
+        entry.target.classList.remove('active');
+      }
+    });
+  }, { threshold: 0.6 }); // Trigger kalau 60% kartu udah kelihatan
+
+  cards.forEach(card => observer.observe(card));
 }
 
 // Update angka indikator (1 / 3) saat di-scroll
@@ -64,4 +86,3 @@ container.addEventListener('scroll', () => {
 });
 
 renderCards();
-
