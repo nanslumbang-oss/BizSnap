@@ -2,31 +2,43 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>BizSnap - Directory Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BizSnap - Direktori UMKM</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Overlay Bar -->
-  <header class="top-overlay">
-    <div class="top-brand">
+  <!-- ========================================== -->
+  <!-- [SEKSI 1] HEADER, SEARCH & FILTER CATEGORY -->
+  <!-- ========================================== -->
+  <header class="navbar">
+    <div class="brand-box">
       <h1 class="brand-title">BIZSNAP</h1>
-      <span id="cardCounter" class="card-counter">1 / 3</span>
+      <p class="brand-sub">Direktori UMKM & Perusahaan</p>
     </div>
 
-    <!-- Filter Kategori Melayang -->
-    <div class="filter-pills" id="filterPills">
-      <button class="pill active" onclick="filterCategory('all')">Semua</button>
-      <button class="pill" onclick="filterCategory('Kuliner')">Kuliner</button>
-      <button class="pill" onclick="filterCategory('Jasa & Care')">Jasa</button>
-      <button class="pill" onclick="filterCategory('Kreatif & IT')">Kreatif</button>
+    <!-- Pencarian -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Cari UMKM atau produk...">
+    </div>
+
+    <!-- Filter Kategori -->
+    <div class="category-pills">
+      <button class="pill active" onclick="filterCategory('all', this)">Semua</button>
+      <button class="pill" onclick="filterCategory('Kuliner', this)">Kuliner</button>
+      <button class="pill" onclick="filterCategory('Jasa & Care', this)">Jasa</button>
+      <button class="pill" onclick="filterCategory('Kreatif & IT', this)">Kreatif</button>
+      <button class="pill" onclick="filterCategory('Fashion', this)">Fashion</button>
     </div>
   </header>
 
-  <!-- Fullpage Snap Container -->
-  <main class="snap-container" id="snapContainer">
-    <!-- Kartu di-generate via script.js -->
+  <!-- ========================================== -->
+  <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
+  <!-- ========================================== -->
+  <main class="container">
+    <div class="grid-container" id="gridContainer">
+      <!-- Kartu di-render otomatis dari script.js -->
+    </div>
   </main>
 
   <script src="script.js"></script>
