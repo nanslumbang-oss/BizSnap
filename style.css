@@ -199,3 +199,27 @@ body {
   border-color: #ef4444;
   background: rgba(239, 68, 68, 0.15);
 }
+
+/* ========================================== */
+/* [BLOK 5] RESPONSIVE DESKTOP (MEDIA QUERIES)*/
+/* Aturan khusus kalau dibuka di layar laptop/PC */
+/* ========================================== */
+@media (min-width: 768px) {
+  
+  /* 1. Bikin ukuran judul BIZSNAP lebih besar di PC */
+  .brand-title {
+    font-size: 1.8rem;
+  }
+
+  /* 2. Bikin banner gambar kartu sedikit lebih tinggi di PC */
+  .card-banner {
+    height: 180px;
+  }
+
+  /* 3. Bikin padding container lebih renggang di PC */
+  .container {
+    padding: 0 24px;
+    margin: 30px auto;
+  }
+
+}
