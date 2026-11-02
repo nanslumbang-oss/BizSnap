@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BizSnap - Direktori UMKM</title>
+  <title>BizSnap - Direktori Cafe & UMKM</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
     <div class="filter-trigger-bar">
       <!-- Trigger Kategori -->
       <div class="dropdown-wrapper">
-        <button class="btn-dropdown" onclick="toggleMenu('catMenu')">
+        <button class="btn-dropdown" onclick="toggleMenu('catMenu', event)">
           📂 <span id="labelCategory">Pilih Kategori</span> <span class="arrow">▼</span>
         </button>
         <!-- Menu Pop-up Kategori -->
@@ -38,12 +38,11 @@
 
       <!-- Trigger Lokasi -->
       <div class="dropdown-wrapper">
-        <button class="btn-dropdown" onclick="toggleMenu('locMenu')">
+        <button class="btn-dropdown" onclick="toggleMenu('locMenu', event)">
           📍 <span id="labelLocation">Pilih Lokasi</span> <span class="arrow">▼</span>
         </button>
-        <!-- Menu Pop-up Lokasi (Berjenjang) -->
+        <!-- Menu Pop-up Lokasi -->
         <div class="dropdown-pop" id="locMenu">
-          <!-- Level 1: Pilih Provinsi -->
           <div id="provView">
             <button class="pop-item active" onclick="selectLocation('all', 'all', 'Semua Lokasi', this)">📍 Semua Lokasi</button>
             <button class="pop-item flex-between" onclick="openCities('Jawa Timur')">
@@ -57,11 +56,10 @@
             </button>
           </div>
 
-          <!-- Level 2: Kota di Jawa Timur (Default tersembunyi) -->
           <div id="cityView-Jatim" class="city-group" style="display: none;">
             <button class="pop-item btn-back" onclick="backToProv()">⬅️ Kembali ke Provinsi</button>
             <div class="pop-divider">Kota di Jawa Timur:</div>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jatim', this)">Semua Jawa Timur</button>
+            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jawa Timur', this)">Semua Jawa Timur</button>
             <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Malang', 'Malang', this)">Malang</button>
             <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Surabaya', 'Surabaya', this)">Surabaya</button>
             <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Batu', 'Batu', this)">Batu</button>
@@ -71,7 +69,6 @@
       </div>
     </div>
   </header>
-  
 
   <!-- ========================================== -->
   <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
