@@ -150,3 +150,23 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* --- ANIMASI TRANSISI SAAT DILUSUR / SNAP --- */
+
+/* Posisi awal: Teks & tombol tersembunyi + rada ke bawah */
+.card-content * {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Posisi aktif: Teks & tombol muncul + naik ke posisi normal */
+.snap-card.active .card-content * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delay: Biar munculnya gantian bertahap, gak barengan */
+.snap-card.active .badge-cat { transition-delay: 0.1s; }
+.snap-card.active .company-name { transition-delay: 0.2s; }
+.snap-card.active .company-desc { transition-delay: 0.3s; }
+.snap-card.active .action-buttons { transition-delay: 0.4s; }
