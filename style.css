@@ -113,8 +113,8 @@ body {
   
   /* Persiapan Animasi Scroll */
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Posisi Aktif Saat Di-scroll */
