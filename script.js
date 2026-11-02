@@ -290,9 +290,12 @@ function toggleMenu(id, event) {
   target.classList.toggle('show');
 }
 
-function selectCategory(catKey, labelText, btn) {
+function selectCategory(catKey, labelText, iconClass, btn) {
   currentCategory = catKey;
   document.getElementById('labelCategory').innerText = labelText;
+  if (iconClass) {
+    document.getElementById('iconCategory').className = iconClass + ' icon-left';
+  }
   document.querySelectorAll('#catMenu .pop-item').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   toggleMenu('catMenu');
@@ -309,10 +312,13 @@ function backToProv() {
   document.getElementById('cityView-Jatim').style.display = 'none';
 }
 
-function selectLocation(provKey, cityKey, labelText, btn) {
+function selectLocation(provKey, cityKey, labelText, iconClass, btn) {
   currentProvince = provKey;
   currentCity = cityKey;
   document.getElementById('labelLocation').innerText = labelText;
+  if (iconClass) {
+    document.getElementById('iconLocation').className = iconClass + ' icon-left';
+  }
   toggleMenu('locMenu');
   backToProv();
   renderCards();
