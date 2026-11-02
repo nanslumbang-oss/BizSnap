@@ -6,6 +6,7 @@ const umkmData = [
     id: 1,
     name: "Nakoa Cafe Panjaitan",
     category: "Cafe",
+    province: "Jawa Timur",
     location: "Malang",
     desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
     bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
@@ -16,6 +17,7 @@ const umkmData = [
     id: 2,
     name: "Toko Kopi Kongca",
     category: "Cafe",
+    province: "Jawa Timur",
     location: "Malang",
     desc: "Kedai kopi peranakan klasik dekat Stasiun Malang dengan sajian kopi butter & roti bakar.",
     bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
@@ -26,6 +28,7 @@ const umkmData = [
     id: 3,
     name: "AADK Coffee & Eatery",
     category: "Cafe",
+    province: "Jawa Timur",
     location: "Malang",
     desc: "Space nongkrong estetik di Jl. Bandung Malang dengan area outdoor luas & menu beragam.",
     bgImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
@@ -36,6 +39,7 @@ const umkmData = [
     id: 4,
     name: "Bukit Delight Malang",
     category: "Cafe",
+    province: "Jawa Timur",
     location: "Malang",
     desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
     bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
@@ -45,7 +49,8 @@ const umkmData = [
 ];
 
 let currentCategory = 'all';
-let currentCity = 'all'; // State filter kota baru
+let currentProvince = 'all';
+let currentCity = 'all';
 let searchQuery = '';
 
 
@@ -67,11 +72,12 @@ function renderCards() {
   // Filter Kategori + Search Keyword
   const filtered = umkmData.filter(item => {
     const matchCategory = currentCategory === 'all' || item.category === currentCategory;
-    const matchCity = currentCity === 'all' || item.location.toLowerCase() === currentCity.toLowerCase();
+    const matchProv = currentProvince === 'all' || item.province === currentProvince;
+    const matchCity = currentCity === 'all' || item.location === currentCity;
     const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
                         item.desc.toLowerCase().includes(searchQuery) ||
                         item.location.toLowerCase().includes(searchQuery);
-    return matchCategory && matchCity && matchSearch;
+    return matchCategory && matchProv && matchCity && matchSearch;
   });
 
   if (filtered.length === 0) {
@@ -158,6 +164,54 @@ function toggleLike(id) {
 searchInput.addEventListener('input', (e) => {
   searchQuery = e.target.value.toLowerCase();
   renderCards();
+
+// Buka/tutup menu pop-up
+function toggleMenu(id) {
+  const target = document.getElementById(id);
+  const allMenus = document.querySelectorAll('.dropdown-pop');
+  allMenus.forEach(m => {
+    if (m !== target) m.classList.remove('show');
+  });
+  target.classList.toggle('show');
+}
+
+// Pilih Kategori
+function selectCategory(catKey, labelText, btn) {
+  currentCategory = catKey;
+  document.getElementById('labelCategory').innerText = labelText;
+  document.querySelectorAll('#catMenu .pop-item').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  toggleMenu('catMenu');
+  renderCards();
+}
+
+// Navigasi Provinsi -> Kota
+function openCities(provName) {
+  document.getElementById('provView').style.display = 'none';
+  document.getElementById('cityView-Jatim').style.display = 'block';
+}
+
+function backToProv() {
+  document.getElementById('provView').style.display = 'block';
+  document.getElementById('cityView-Jatim').style.display = 'none';
+}
+
+// Pilih Lokasi (Provinsi / Kota)
+function selectLocation(provKey, cityKey, labelText, btn) {
+  currentProvince = provKey;
+  currentCity = cityKey;
+  document.getElementById('labelLocation').innerText = labelText;
+  toggleMenu('locMenu');
+  backToProv(); // Reset view ke provinsi buat next time
+  renderCards();
+}
+
+// Tutup menu kalau klik di luar dropdown
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-wrapper')) {
+    document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
+  }
+
 });
 
 
