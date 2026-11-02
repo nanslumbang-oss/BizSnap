@@ -99,12 +99,12 @@ function renderCards() {
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.desc}</p>
         <div class="card-footer">
-          <a href="https://wa.me/${item.whatsapp}" target="_blank" class="btn-wa">💬 WhatsApp</a>
-          <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
-            ❤️ ${totalLikes}
-          </button>
-        </div>
-      </div>
+        <button class="btn-detail" onclick="openModal(${item.id})">👉🏻Lihat Detail👈🏻</button>
+        <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
+          ❤️ ${totalLikes}
+      </button>
+    </div>
+    
     `;
     gridContainer.appendChild(card);
   });
@@ -197,6 +197,52 @@ document.addEventListener('click', (e) => {
   if (!e.target.closest('.dropdown-wrapper')) {
     document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
   }
+});
+
+// Buka Modal Detail Tempat
+function openModal(id) {
+  const item = umkmData.find(d => d.id === id);
+  if (!item) return;
+
+  const modalBody = document.getElementById('modalBody');
+  const reviewHTML = item.reviews.map(r => `<div class="review-item">"${r}"</div>`).join('');
+
+  modalBody.innerHTML = ` 
+    <img src="${item.bgImage}" class="modal-banner" alt="${item.name}">
+    <div class="modal-details">
+      <div class="modal-meta">
+        <span class="card-badge">${item.category}</span>
+        <span class="rating-badge">${item.rating}</span>
+      </div>
+      <h2 style="font-size: 1.4rem; font-weight: 900;">${item.name}</h2>
+      <p class="modal-address">📍 ${item.address}</p>
+      <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">${item.desc}</p>
+      
+      <div class="review-section">
+        <div class="review-title">💬 5 Ulasan Pengunjung:</div>
+        <div class="review-list">
+          ${reviewHTML}
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <a href="${item.mapsUrl}" target="_blank" class="btn-action-maps">🗺️ Google Maps</a>
+        <a href="${item.webUrl}" target="_blank" class="btn-action-web">🌐 Sosmed / Web</a>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('detailModal').classList.add('show');
+}
+
+// Tutup Modal
+function closeModal() {
+  document.getElementById('detailModal').classList.remove('show');
+}
+
+// Tutup modal jika klik di luar box
+document.getElementById('detailModal').addEventListener('click', (e) => {
+  if (e.target.id === 'detailModal') closeModal();
 });
 
 
