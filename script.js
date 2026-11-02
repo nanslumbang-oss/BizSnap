@@ -204,7 +204,7 @@ function renderCards() {
   });
 
   if (filtered.length === 0) {
-    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada Cafe/UMKM yang ditemukan.</p>`;
+    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada tempat yang ditemukan.</p>`;
     return;
   }
 
@@ -219,27 +219,30 @@ function renderCards() {
       <div class="card-body">
         <div class="card-badge-group">
           <span class="card-badge">${item.category}</span>
-          <span class="card-location">📍 ${item.location}</span>
+          <span class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
         </div>
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.desc}</p>
         <div class="card-footer">
-        <button class="btn-detail" onclick="openModal(${item.id})">👉🏻Lihat Detail👈🏻</button>
-        <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
-          ❤️ ${totalLikes}
-      </button>
-    </div>
-    
+          <button class="btn-detail" onclick="openModal(${item.id})">
+            <i class="fa-solid fa-eye"></i> Lihat Detail
+          </button>
+          <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
+            <i class="fa-solid fa-heart"></i> ${totalLikes}
+          </button>
+        </div>
+      </div>
     `;
     gridContainer.appendChild(card);
   });
 
-  initScrollAnimation();
+  // Trigger ulang animasi setelah kartu dicetak di DOM
+  setTimeout(initScrollAnimation, 50);
 }
 
 
 // ==========================================
-// [BLOK 4] ANIMASI SCROLL (OBSERVER EFEK MUNCUL)
+// [BLOK 4] ANIMASI SCROLL 60FPS (OBSERVER)
 // ==========================================
 function initScrollAnimation() {
   const cards = document.querySelectorAll('.umkm-card');
@@ -251,10 +254,11 @@ function initScrollAnimation() {
         entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   cards.forEach(card => observer.observe(card));
 }
+
 
 
 // ==========================================
