@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BizSnap - Direktori UMKM & Perusahaan</title>
-  <link rel="stylesheet" href="style.css">
+  <title>BizSnap - Direktori UMKM & Cafe</title>
+  <!-- Vector Icons Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ========================================== -->
-  <!-- [SEKSI 1] HEADER & DROPDOWN COMPACT (FA)   -->
+  <!-- ========================================== -->
+  <!-- [SEKSI 1] HEADER & NAVIGASI FIXED          -->
   <!-- ========================================== -->
   <header class="navbar">
     <div class="brand-box">
@@ -21,13 +22,13 @@
       <p class="brand-sub">Direktori UMKM & Perusahaan</p>
     </div>
 
-    <!-- Search Box dengan Icon Vector -->
+    <!-- Search Box -->
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass search-icon"></i>
       <input type="text" id="searchInput" placeholder="Cari nama tempat yang ingin dituju...">
     </div>
 
-    <!-- Tombol Filter Ringkas -->
+    <!-- Filter Dropdown Bar -->
     <div class="filter-trigger-bar">
       <!-- Dropdown Kategori -->
       <div class="dropdown-wrapper">
@@ -93,16 +94,15 @@
       </div>
     </div>
   </header>
-  
+
   <!-- ========================================== -->
   <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
   <!-- ========================================== -->
   <main class="container">
     <div class="grid-container" id="gridContainer">
-      <!-- Kartu di-render otomatis dari script.js -->
+      <!-- Di-render dari script.js -->
     </div>
   </main>
-  
 
   <!-- ========================================== -->
   <!-- [SEKSI 3] MODAL POP-UP DETAIL TEMPAT       -->
@@ -111,7 +111,7 @@
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <div id="modalBody">
-        <!-- Isi detail di-render lewat script.js -->
+        <!-- Di-render dari script.js -->
       </div>
     </div>
   </div>
@@ -119,4 +119,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
