@@ -67,8 +67,11 @@ function renderCards() {
   // Filter Kategori + Search Keyword
   const filtered = umkmData.filter(item => {
     const matchCategory = currentCategory === 'all' || item.category === currentCategory;
-    const matchSearch = item.name.toLowerCase().includes(searchQuery) || item.desc.toLowerCase().includes(searchQuery);
-    return matchCategory && matchSearch;
+    const matchCity = currentCity === 'all' || item.location.toLowerCase() === currentCity.toLowerCase();
+    const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
+                        item.desc.toLowerCase().includes(searchQuery) ||
+                        item.location.toLowerCase().includes(searchQuery);
+    return matchCategory && matchCity && matchSearch;
   });
 
   if (filtered.length === 0) {
@@ -137,6 +140,13 @@ function getSavedLikes() {
   return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
 }
 
+function filterCity(city, btnElement) {
+  currentCity = city;
+  document.querySelectorAll('.pill-city').forEach(btn => btn.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+  renderCards();
+}
+
 function toggleLike(id) {
   const savedLikes = getSavedLikes();
   savedLikes[id] = !savedLikes[id];
@@ -149,6 +159,7 @@ searchInput.addEventListener('input', (e) => {
   searchQuery = e.target.value.toLowerCase();
   renderCards();
 });
+
 
 
 // ==========================================
