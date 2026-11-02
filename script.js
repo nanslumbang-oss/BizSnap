@@ -1,48 +1,49 @@
 // ==========================================
 // [BLOK 1] DATA UMKM & STATE UTAMA
-// Tambah/edit data bisnis kamu di sini
+// Khusus Katalog Cafe Terpercaya
 // ==========================================
 const umkmData = [
   {
     id: 1,
-    name: "Laundry God",
-    category: "Jasa & Care",
-    desc: "Layanan cuci sepatu & baju premium 24 jam kilat, wangi, & terpercaya.",
-    bgImage: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=80",
-    whatsapp: "628123456789",
-    likes: 124
+    name: "Nakoa Cafe Panjaitan",
+    category: "Cafe",
+    desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
+    bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    whatsapp: "6282223451237",
+    likes: 452
   },
   {
     id: 2,
-    name: "Kopi Ndeso Bromo",
-    category: "Kuliner",
-    desc: "Racikan kopi robusta lokal khas pegunungan Bromo dengan cita rasa otentik.",
+    name: "Toko Kopi Kongca",
+    category: "Cafe",
+    desc: "Kedai kopi peranakan klasik dekat Stasiun Malang dengan sajian kopi butter & roti bakar.",
     bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
-    whatsapp: "628123456789",
-    likes: 89
+    whatsapp: "6285291115758",
+    likes: 289
   },
   {
     id: 3,
-    name: "Sultan Studio 3D",
-    category: "Kreatif & IT",
-    desc: "Jasa pembuatan aset visual 3D, desain logo, dan pengembangan web interaktif.",
-    bgImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-    whatsapp: "628123456789",
-    likes: 210
+    name: "AADK Coffee & Eatery",
+    category: "Cafe",
+    desc: "Space nongkrong estetik di Jl. Bandung Malang dengan area outdoor luas & menu beragam.",
+    bgImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+    whatsapp: "628989739939",
+    likes: 310
   },
   {
     id: 4,
-    name: "Batik Modern Co",
-    category: "Fashion",
-    desc: "Pakaian batik kasual pria dan wanita bahan adem cocok buat harian.",
-    bgImage: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80",
-    whatsapp: "628123456789",
-    likes: 56
+    name: "Bukit Delight Malang",
+    category: "Cafe",
+    desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
+    bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    whatsapp: "628113039817",
+    likes: 520
   }
 ];
 
 let currentCategory = 'all';
 let searchQuery = '';
+
 
 
 // ==========================================
