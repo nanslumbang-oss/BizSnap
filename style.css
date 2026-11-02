@@ -17,17 +17,28 @@ body {
 /* ========================================== */
 /* [BLOK 2] HEADER & DROPDOWN COMPACT         */
 /* ========================================== */
+.brand-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .brand-header {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* Pengunci Ukuran Logo */
 .brand-logo {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  border-radius: 8px;
   object-fit: cover;
+  flex-shrink: 0;
+  display: block;
 }
 
 .brand-title {
@@ -35,33 +46,14 @@ body {
   font-weight: 900;
   color: #38bdf8;
   letter-spacing: 1px;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  background: rgba(11, 15, 25, 0.95);
-  backdrop-filter: blur(12px);
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.brand-title {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #38bdf8;
-  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0;
 }
 
 .brand-sub {
   font-size: 0.75rem;
   color: #94a3b8;
 }
-
 /* Style Kolom Pencarian */
 .search-box {
   width: 100%;
