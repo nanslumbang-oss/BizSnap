@@ -12,7 +12,7 @@ const umkmData = [
     address: "Jl. Mayjend Panjaitan No.75, Klojen, Kota Malang",
     desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
     bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
-    mapsUrl: "https://maps.app.goo.gl/uX3Vn5c1D3w817",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nakoa+Cafe+Panjaitan+Malang",
     webUrl: "https://instagram.com/nakoa.id",
     likes: 452,
     reviews: [
@@ -33,7 +33,7 @@ const umkmData = [
     address: "Jl. Trunojoyo No.23, Klojen, Kota Malang (Dekat Stasiun)",
     desc: "Kedai kopi peranakan klasik dekat Stasiun Malang dengan sajian kopi butter & roti bakar.",
     bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
-    mapsUrl: "https://maps.app.goo.gl/KongcaMalang",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Toko+Kopi+Kongca+Malang",
     webUrl: "https://instagram.com/tokokopikongca",
     likes: 289,
     reviews: [
@@ -54,8 +54,7 @@ const umkmData = [
     address: "Jl. Bandung No.28, Klojen, Kota Malang",
     desc: "Space nongkrong estetik di Jl. Bandung Malang dengan area outdoor luas & menu beragam.",
     bgImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
-    whatsapp: "628989739939",
-    mapsUrl: "https://maps.app.goo.gl/AADKMalang",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=AADK+Coffee+Eatery+Bandung+Malang",
     webUrl: "https://instagram.com/aadk.coffeeeatery",
     likes: 310,
     reviews: [
@@ -76,7 +75,7 @@ const umkmData = [
     address: "Jl. Joyo Agung No.1, Tlogomas, Lowokwaru, Kota Malang",
     desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
     bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-    mapsUrl: "https://maps.app.goo.gl/BukitDelight",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bukit+Delight+Malang",
     webUrl: "https://instagram.com/bukitdelight",
     likes: 520,
     reviews: [
