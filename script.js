@@ -1,6 +1,5 @@
 // ==========================================
 // [BLOK 1] DATA UMKM & STATE UTAMA
-// Katalog Cafe Terpercaya Malang (Total 8 Tempat)
 // ==========================================
 const umkmData = [
   {
@@ -178,13 +177,11 @@ let currentProvince = 'all';
 let currentCity = 'all';
 let searchQuery = '';
 
-
 // ==========================================
-// [BLOK 2] PENGAMBILAN ELEMEN DOM
+// [BLOK 2] ELEMEN DOM
 // ==========================================
 const gridContainer = document.getElementById('gridContainer');
 const searchInput = document.getElementById('searchInput');
-
 
 // ==========================================
 // [BLOK 3] RENDER KARTU KE LAYAR GRID
@@ -236,13 +233,11 @@ function renderCards() {
     gridContainer.appendChild(card);
   });
 
-  // Trigger ulang animasi setelah kartu dicetak di DOM
   setTimeout(initScrollAnimation, 50);
 }
 
-
 // ==========================================
-// [BLOK 4] ANIMASI SCROLL 60FPS (OBSERVER)
+// [BLOK 4] ANIMASI SCROLL 60FPS
 // ==========================================
 function initScrollAnimation() {
   const cards = document.querySelectorAll('.umkm-card');
@@ -254,15 +249,13 @@ function initScrollAnimation() {
         entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1 });
 
   cards.forEach(card => observer.observe(card));
 }
 
-
-
 // ==========================================
-// [BLOK 5] FITUR INTERAKSI & DROPDOWN MENU
+// [BLOK 5] INTERAKSI & MODAL POP-UP
 // ==========================================
 function getSavedLikes() {
   return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
@@ -328,13 +321,7 @@ function selectLocation(provKey, cityKey, labelText, iconClass, btn) {
   renderCards();
 }
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.dropdown-wrapper')) {
-    document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
-  }
-});
-
-// Buka Modal Detail Tempat
+// Modal Detail Tempat
 function openModal(id) {
   const item = umkmData.find(d => d.id === id);
   if (!item) return;
@@ -342,27 +329,31 @@ function openModal(id) {
   const modalBody = document.getElementById('modalBody');
   const reviewHTML = item.reviews.map(r => `<div class="review-item">"${r}"</div>`).join('');
 
-  modalBody.innerHTML = ` 
+  modalBody.innerHTML = `
     <img src="${item.bgImage}" class="modal-banner" alt="${item.name}">
     <div class="modal-details">
       <div class="modal-meta">
         <span class="card-badge">${item.category}</span>
         <span class="rating-badge">${item.rating}</span>
       </div>
-      <h2 style="font-size: 1.4rem; font-weight: 900;">${item.name}</h2>
-      <p class="modal-address">📍 ${item.address}</p>
+      <h2 style="font-size: 1.3rem; font-weight: 900; color:#fff;">${item.name}</h2>
+      <p class="modal-address"><i class="fa-solid fa-location-dot"></i> ${item.address}</p>
       <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">${item.desc}</p>
       
       <div class="review-section">
-        <div class="review-title">💬 5 Ulasan Pengunjung:</div>
+        <div class="review-title"><i class="fa-solid fa-comments"></i> 5 Ulasan Pengunjung:</div>
         <div class="review-list">
           ${reviewHTML}
         </div>
       </div>
 
       <div class="modal-actions">
-        <a href="${item.mapsUrl}" target="_blank" class="btn-action-maps">🗺️ Google Maps</a>
-        <a href="${item.webUrl}" target="_blank" class="btn-action-web">🌐 Sosmed / Web</a>
+        <a href="${item.mapsUrl}" target="_blank" class="btn-action-maps">
+          <i class="fa-solid fa-map-location-dot"></i> Google Maps
+        </a>
+        <a href="${item.webUrl}" target="_blank" class="btn-action-web">
+          <i class="fa-solid fa-globe"></i> Sosmed / Web
+        </a>
       </div>
     </div>
   `;
@@ -370,18 +361,20 @@ function openModal(id) {
   document.getElementById('detailModal').classList.add('show');
 }
 
-// Tutup Modal
 function closeModal() {
   document.getElementById('detailModal').classList.remove('show');
 }
 
-// Tutup modal jika klik di luar box
 document.getElementById('detailModal').addEventListener('click', (e) => {
   if (e.target.id === 'detailModal') closeModal();
 });
 
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-wrapper')) {
+    document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
+  }
+});
 
-// ==========================================
-// [BLOK 6] JALANKAN SAAT AWAL BUKA WEB
-// ==========================================
+// Jalankan awal
 renderCards();
+      
