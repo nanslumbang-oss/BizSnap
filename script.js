@@ -54,7 +54,6 @@ let currentCity = 'all';
 let searchQuery = '';
 
 
-
 // ==========================================
 // [BLOK 2] PENGAMBILAN ELEMEN DOM
 // ==========================================
@@ -69,7 +68,6 @@ function renderCards() {
   gridContainer.innerHTML = '';
   const savedLikes = getSavedLikes();
 
-  // Filter Kategori + Search Keyword
   const filtered = umkmData.filter(item => {
     const matchCategory = currentCategory === 'all' || item.category === currentCategory;
     const matchProv = currentProvince === 'all' || item.province === currentProvince;
@@ -81,7 +79,7 @@ function renderCards() {
   });
 
   if (filtered.length === 0) {
-    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada UMKM yang ditemukan.</p>`;
+    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada Cafe/UMKM yang ditemukan.</p>`;
     return;
   }
 
@@ -94,7 +92,10 @@ function renderCards() {
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner">
       <div class="card-body">
-        <span class="card-badge">${item.category}</span>
+        <div class="card-badge-group">
+          <span class="card-badge">${item.category}</span>
+          <span class="card-location">📍 ${item.location}</span>
+        </div>
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.desc}</p>
         <div class="card-footer">
@@ -108,7 +109,6 @@ function renderCards() {
     gridContainer.appendChild(card);
   });
 
-  // Panggil pendeteksi animasi scroll
   initScrollAnimation();
 }
 
@@ -123,34 +123,20 @@ function initScrollAnimation() {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       } else {
-        // Hapus class biar animasinya main lagi tiap kali di-scroll bolak-balik
-        entry.target.classList.remove('visible'); 
+        entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.1 }); // Turunkan ke 0.1 biar langsung dapet trigger di HP
+  }, { threshold: 0.1 });
 
   cards.forEach(card => observer.observe(card));
 }
 
-// ==========================================
-// [BLOK 5] FITUR INTERAKSI (FILTER, SEARCH, LIKE)
-// ==========================================
-function filterCategory(category, btnElement) {
-  currentCategory = category;
-  document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active'));
-  if (btnElement) btnElement.classList.add('active');
-  renderCards();
-}
 
+// ==========================================
+// [BLOK 5] FITUR INTERAKSI & DROPDOWN MENU
+// ==========================================
 function getSavedLikes() {
   return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
-}
-
-function filterCity(city, btnElement) {
-  currentCity = city;
-  document.querySelectorAll('.pill-city').forEach(btn => btn.classList.remove('active'));
-  if (btnElement) btnElement.classList.add('active');
-  renderCards();
 }
 
 function toggleLike(id) {
@@ -160,32 +146,34 @@ function toggleLike(id) {
   renderCards();
 }
 
-// Pencarian Live
-searchInput.addEventListener('input', (e) => {
-  searchQuery = e.target.value.toLowerCase();
-  renderCards();
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase();
+    renderCards();
+  });
+}
 
-// Buka/tutup menu pop-up
-function toggleMenu(id) {
+function toggleMenu(id, event) {
+  if (event) event.stopPropagation();
   const target = document.getElementById(id);
   const allMenus = document.querySelectorAll('.dropdown-pop');
+  
   allMenus.forEach(m => {
     if (m !== target) m.classList.remove('show');
   });
+  
   target.classList.toggle('show');
 }
 
-// Pilih Kategori
 function selectCategory(catKey, labelText, btn) {
   currentCategory = catKey;
   document.getElementById('labelCategory').innerText = labelText;
   document.querySelectorAll('#catMenu .pop-item').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
   toggleMenu('catMenu');
   renderCards();
 }
 
-// Navigasi Provinsi -> Kota
 function openCities(provName) {
   document.getElementById('provView').style.display = 'none';
   document.getElementById('cityView-Jatim').style.display = 'block';
@@ -196,27 +184,23 @@ function backToProv() {
   document.getElementById('cityView-Jatim').style.display = 'none';
 }
 
-// Pilih Lokasi (Provinsi / Kota)
 function selectLocation(provKey, cityKey, labelText, btn) {
   currentProvince = provKey;
   currentCity = cityKey;
   document.getElementById('labelLocation').innerText = labelText;
   toggleMenu('locMenu');
-  backToProv(); // Reset view ke provinsi buat next time
+  backToProv();
   renderCards();
 }
 
-// Tutup menu kalau klik di luar dropdown
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.dropdown-wrapper')) {
     document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
   }
-
 });
 
 
-
 // ==========================================
-// [BLOK 6] JALANKAN PERTAMA KALI
+// [BLOK 6] JALANKAN SAAT AWAL BUKA WEB
 // ==========================================
 renderCards();
