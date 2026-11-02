@@ -83,7 +83,17 @@ body {
   color: #0f172a;
   border-color: #38bdf8;
 }
+ .pill-city {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.2);
+  font-size: 0.75rem;
+}
 
+.pill-city.active {
+  background: #38bdf8;
+  color: #0f172a;
+}
+  
 /* ========================================== */
 /* [BLOK 3] LAYOUT GRID KARTU                 */
 /* ========================================== */
