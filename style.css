@@ -117,4 +117,144 @@ body { background-color: var(--bg-main); color: var(--text-primary); padding-bot
 .reveal.active {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-                 }
+}
+
+/* ========================================== */
+/* MENU BURGER & SIDE DRAWER                  */
+/* ========================================== */
+
+/* Pastikan nav-container pakai flex antara logo dan burger */
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Supaya logo kiri, burger kanan */
+  align-items: center;
+}
+
+/* Desain Garis 3 (Burger) */
+.menu-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animasi saat burger diklik jadi (X) */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Overlay Gelap saat menu terbuka */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1002;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Desain Menu Samping (Drawer) */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Sembunyi di kanan layar */
+  width: 280px;
+  height: 100vh;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-color);
+  z-index: 1003;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Animasi geser mulus */
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+/* Class active untuk memunculkan menu */
+.side-menu.active {
+  right: 0;
+}
+
+.side-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.side-menu-header h2 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.close-menu {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-menu:hover {
+  color: var(--like-red);
+}
+
+/* Link di dalam Menu */
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-menu-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 14px 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.side-menu-links a:hover, .side-menu-links a.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  padding-left: 20px; /* Efek geser dikit saat di-hover */
+}
+
+.side-menu-links a i {
+  font-size: 1.1rem;
+}
