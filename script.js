@@ -1050,17 +1050,11 @@ function initApp() {
     document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
   });
 
-  // --- LOGIKA MENU GARIS 3 (BURGER) & NAVIGASI ---
+ // --- LOGIKA MENU GARIS 3 (BURGER) ---
 const menuToggle = document.getElementById('menuToggle');
 const sideMenu = document.getElementById('sideMenu');
 const menuOverlay = document.getElementById('menuOverlay');
 const closeMenu = document.getElementById('closeMenu');
-
-// Pop-up Info
-const infoModal = document.getElementById('infoModal');
-const closeInfoModal = document.getElementById('closeInfoModal');
-const infoTitle = document.getElementById('infoTitle');
-const infoContent = document.getElementById('infoContent');
 
 function toggleMenu() {
   menuToggle.classList.toggle('active');
@@ -1073,51 +1067,15 @@ if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
 if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
 if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
 
-// Fungsi buka pop-up info
-function showInfo(title, htmlContent) {
-  infoTitle.innerHTML = title;
-  infoContent.innerHTML = htmlContent;
-  infoModal.classList.add('active');
-  toggleMenu(); // Tutup menu samping otomatis
-}
-
-// Aksi Tombol Menu
-document.getElementById('navBeranda')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  isShowingFavorites = false; // Matikan mode favorit
-  document.getElementById('searchInput').value = '';
-  selectedCategory = 'all'; selectedProvince = 'all'; selectedCity = 'all';
-  document.getElementById('categoryLabel').textContent = 'Semua Kategori';
-  document.getElementById('locationLabel').textContent = 'Semua Lokasi';
-  filterData(); // Tampilkan semua
-  window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas
-  toggleMenu(); // Tutup menu
-});
-
-document.getElementById('navTentang')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  showInfo("Tentang BizSnap", "<p>BizSnap adalah direktori UMKM dan tempat nongkrong terbaik. Dibuat khusus untuk memudahkan kamu menemukan tempat favorit di kotamu.</p>");
-});
-
+// Aksi Tombol Favorit (Tetap di halaman yang sama)
 document.getElementById('navFavorit')?.addEventListener('click', (e) => {
   e.preventDefault();
-  isShowingFavorites = true; // Nyalakan mode favorit
-  filterData(); // Tampilkan HANYA yang disukai
-  toggleMenu(); // Tutup menu
+  isShowingFavorites = true;
+  filterData();
+  toggleMenu();
 });
-
-document.getElementById('navKontak')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  showInfo("Hubungi Kami", "<p>Ada pertanyaan atau mau kerjasama?</p><br><p>Email: <b>halo@bizsnap.id</b></p><p>Instagram: <b>@bizsnap.id</b></p>");
-});
-
-// Tutup popup info
-if (closeInfoModal) closeInfoModal.addEventListener('click', () => {
-  infoModal.classList.remove('active');
-});
-window.addEventListener('click', (e) => {
-  if (e.target === infoModal) infoModal.classList.remove('active');
-});
+  
+// ------------------------------------
   
 // ------------------------------------
   // ------------------------------------
