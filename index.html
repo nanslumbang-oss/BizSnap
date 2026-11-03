@@ -5,47 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BizSnap - Direktori UMKM</title>
   
-  <!-- LIBRARY / FONT (JANGAN DIUBAH) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- ========================================== -->
-  <!-- BAGIAN HEADER (LOGO, PENCARIAN, FILTER)    -->
+  <!-- BLOK 1: BAGIAN ATAS (Logo & Menu Garis 3)  -->
   <!-- ========================================== -->
   <header class="sticky-header">
     <div class="nav-container">
       <div class="brand-logo">
         <i class="fa-solid fa-store logo-icon"></i>
         <div class="brand-text">
-          <!-- GANTI JUDUL WEB DI SINI -->
           <h1 class="brand-title">BIZSNAP</h1>
-          <p class="brand-subtitle">Direktori UMKM & Perusahaan</p>
+          <p class="brand-subtitle">Direktori UMKM</p>
         </div>
       </div>
       
-       <!-- TOMBOL BURGER (GARIS 3) -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+      <!-- TOMBOL GARIS 3 (BURGER) -->
+      <button class="menu-toggle" id="menuToggle">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
     </div>
-   
 
+    <!-- ========================================== -->
+    <!-- BLOK 2: KOLOM PENCARIAN & FILTER           -->
+    <!-- ========================================== -->
     <div class="filter-section">
-      <!-- KOLOM PENCARIAN -->
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Cari nama tempat, lokasi, atau kata kunci...">
+        <input type="text" id="searchInput" placeholder="Cari nama tempat atau lokasi...">
       </div>
 
       <div class="filter-group">
-        <!-- FILTER KATEGORI -->
+        <!-- Filter Kategori (Cafe, Resto, dll) -->
         <div class="custom-dropdown" id="dropdownCategory">
           <div class="dropdown-trigger">
             <i class="fa-solid fa-layer-group select-icon"></i>
@@ -55,33 +52,31 @@
           <div class="dropdown-menu">
             <div class="dropdown-item active" data-value="all">Semua Kategori</div>
             <div class="dropdown-item" data-value="Cafe">Cafe & Coffee Shop</div>
-            <!-- Kalau mau nambah kategori baru (misal: Resto), tambahkan baris di bawah ini -->
-            <!-- <div class="dropdown-item" data-value="Resto">Restoran</div> -->
           </div>
         </div>
 
-        <!-- FILTER LOKASI -->
-<div class="custom-dropdown" id="dropdownLocation">
-  <div class="dropdown-trigger">
-    <i class="fa-solid fa-location-dot select-icon"></i>
-    <span class="dropdown-label" id="locationLabel">Semua Lokasi</span>
-    <i class="fa-solid fa-chevron-down chevron-icon"></i>
-  </div>
-  <!-- BAGIAN INI KOSONGIN AJA, NANTI DIISI OTOMATIS SAMA JS -->
-  <div class="dropdown-menu" id="locationMenu"></div>
-</div>
+        <!-- Filter Lokasi (Provinsi & Kota - Kosong karena diisi otomatis) -->
+        <div class="custom-dropdown" id="dropdownLocation">
+          <div class="dropdown-trigger">
+            <i class="fa-solid fa-location-dot select-icon"></i>
+            <span class="dropdown-label" id="locationLabel">Semua Lokasi</span>
+            <i class="fa-solid fa-chevron-down chevron-icon"></i>
+          </div>
+          <div class="dropdown-menu" id="locationMenu"></div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- ========================================== -->
-  <!-- WADAH KARTU CAFE (OTOMATIS DIISI OLEH JS)  -->
+  <!-- BLOK 3: TEMPAT KARTU CAFE MUNCUL           -->
   <!-- ========================================== -->
   <main class="main-content">
     <div id="umkmContainer" class="grid-container"></div>
   </main>
 
   <!-- ========================================== -->
-  <!-- POPUP DETAIL (MUNCUL SAAT TOMBOL DIKLIK)   -->
+  <!-- BLOK 4: POPUP DETAIL (Saat klik "Detail")  -->
   <!-- ========================================== -->
   <div id="detailModal" class="modal-overlay">
     <div class="modal-card">
@@ -91,22 +86,21 @@
   </div>
 
   <!-- ========================================== -->
-<!-- MENU SAMPING (SIDE DRAWER)                 -->
-<!-- ========================================== -->
-<div class="menu-overlay" id="menuOverlay"></div>
-
-<div class="side-menu" id="sideMenu">
-  <div class="side-menu-header">
-    <h2>Menu</h2>
-    <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
+  <!-- BLOK 5: ISI MENU SAAT GARIS 3 DIKLIK       -->
+  <!-- ========================================== -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <h2>Menu</h2>
+      <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="side-menu-links">
+      <a href="#"><i class="fa-solid fa-house"></i> Beranda</a>
+      <a href="#"><i class="fa-solid fa-circle-info"></i> Tentang Kami</a>
+      <a href="#"><i class="fa-solid fa-heart"></i> Favorit Saya</a>
+      <a href="#"><i class="fa-solid fa-envelope"></i> Hubungi Kami</a>
+    </div>
   </div>
-  <div class="side-menu-links">
-    <a href="#"><i class="fa-solid fa-house"></i> Beranda</a>
-    <a href="#"><i class="fa-solid fa-circle-info"></i> Tentang Kami</a>
-    <a href="#"><i class="fa-solid fa-heart"></i> Favorit Saya</a>
-    <a href="#"><i class="fa-solid fa-envelope"></i> Hubungi Kami</a>
-  </div>
-</div>
 
   <script src="script.js"></script>
 </body>
