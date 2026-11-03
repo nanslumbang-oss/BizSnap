@@ -831,6 +831,7 @@ let selectedProvince = 'all';
 let selectedCity = 'all';
 let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 let observer;
+let isShowingFavorites = false; 
 
 const formatNumber = (num) => num >= 1000 ? (num / 1000).toFixed(1) + 'k' : num;
 
@@ -1049,33 +1050,76 @@ function initApp() {
     document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
   });
 
-  // --- LOGIKA MENU GARIS 3 (BURGER) ---
-  const menuToggle = document.getElementById('menuToggle');
-  const sideMenu = document.getElementById('sideMenu');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const closeMenu = document.getElementById('closeMenu');
+  // --- LOGIKA MENU GARIS 3 (BURGER) & NAVIGASI ---
+const menuToggle = document.getElementById('menuToggle');
+const sideMenu = document.getElementById('sideMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+const closeMenu = document.getElementById('closeMenu');
 
-  function toggleMenu() {
-    menuToggle.classList.toggle('active');
-    sideMenu.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
-  }
+// Pop-up Info
+const infoModal = document.getElementById('infoModal');
+const closeInfoModal = document.getElementById('closeInfoModal');
+const infoTitle = document.getElementById('infoTitle');
+const infoContent = document.getElementById('infoContent');
 
-  if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
-  if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
-  if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
-  
-  // KODE BARU: Biar menu otomatis nutup kalau link diklik
-const menuLinks = document.querySelectorAll('.side-menu-links a');
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    sideMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = ''; // Biar layar bisa discroll lagi
-  });
+function toggleMenu() {
+  menuToggle.classList.toggle('active');
+  sideMenu.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+
+// Fungsi buka pop-up info
+function showInfo(title, htmlContent) {
+  infoTitle.innerHTML = title;
+  infoContent.innerHTML = htmlContent;
+  infoModal.classList.add('active');
+  toggleMenu(); // Tutup menu samping otomatis
+}
+
+// Aksi Tombol Menu
+document.getElementById('navBeranda')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  isShowingFavorites = false; // Matikan mode favorit
+  document.getElementById('searchInput').value = '';
+  selectedCategory = 'all'; selectedProvince = 'all'; selectedCity = 'all';
+  document.getElementById('categoryLabel').textContent = 'Semua Kategori';
+  document.getElementById('locationLabel').textContent = 'Semua Lokasi';
+  filterData(); // Tampilkan semua
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll ke atas
+  toggleMenu(); // Tutup menu
 });
+
+document.getElementById('navTentang')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  showInfo("Tentang BizSnap", "<p>BizSnap adalah direktori UMKM dan tempat nongkrong terbaik. Dibuat khusus untuk memudahkan kamu menemukan tempat favorit di kotamu.</p>");
+});
+
+document.getElementById('navFavorit')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  isShowingFavorites = true; // Nyalakan mode favorit
+  filterData(); // Tampilkan HANYA yang disukai
+  toggleMenu(); // Tutup menu
+});
+
+document.getElementById('navKontak')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  showInfo("Hubungi Kami", "<p>Ada pertanyaan atau mau kerjasama?</p><br><p>Email: <b>halo@bizsnap.id</b></p><p>Instagram: <b>@bizsnap.id</b></p>");
+});
+
+// Tutup popup info
+if (closeInfoModal) closeInfoModal.addEventListener('click', () => {
+  infoModal.classList.remove('active');
+});
+window.addEventListener('click', (e) => {
+  if (e.target === infoModal) infoModal.classList.remove('active');
+});
+  
+// ------------------------------------
   // ------------------------------------
 } // <--- INI KURUNG KURAWAL YANG KELUPAAN TADI BANG! UDAH DIBENERIN.
 
