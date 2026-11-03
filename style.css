@@ -12,6 +12,7 @@
 :root {
   --bg-main: #0f172a;       /* Dark Navy Utama */
   --bg-card: #1e293b;       /* Card Dark Slate */
+  --bg-hover: #334155;
   --accent-cyan: #38bdf8;   /* Cyan Glow BIZSNAP */
   --accent-blue: #0284c7;
   --text-primary: #f8fafc;  /* Clean White */
@@ -23,7 +24,7 @@
 
 html, body {
   width: 100%;
-  overflow-x: hidden; /* Cegah scroll samping pas animasi jalan */
+  overflow-x: hidden;
 }
 
 body {
@@ -90,7 +91,7 @@ body {
 }
 
 /* ========================================== */
-/* [BLOK 3] SEARCH & FILTER SECTION          */
+/* [BLOK 3] SEARCH & CUSTOM DROPDOWN          */
 /* ========================================== */
 .filter-section {
   max-width: 1200px;
@@ -137,38 +138,84 @@ body {
   gap: 10px;
 }
 
-.select-wrapper {
+/* Custom Dropdown Dark Mode Component */
+.custom-dropdown {
   position: relative;
   flex: 1;
 }
 
-.select-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent-cyan);
-  font-size: 0.82rem;
-  pointer-events: none;
-}
-
-.filter-select {
+.dropdown-trigger {
   width: 100%;
-  padding: 10px 10px 10px 32px;
+  padding: 10px 12px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px;
   color: var(--text-primary);
   font-size: 0.82rem;
   font-weight: 600;
-  outline: none;
-  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  user-select: none;
 }
 
-.filter-select option {
-  background-color: #1e293b;
-  color: #f8fafc;
+.select-icon {
+  color: var(--accent-cyan);
+  font-size: 0.82rem;
+}
+
+.dropdown-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevron-icon {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown.open .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #1e293b;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 120;
+}
+
+.custom-dropdown.open .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-item {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
 }
 
 /* ========================================== */
@@ -410,7 +457,7 @@ body {
 @keyframes slideFromLeft {
   0% {
     opacity: 0;
-    transform: translate3d(-60px, 0, 0);
+    transform: translate3d(-50px, 0, 0);
   }
   100% {
     opacity: 1;
@@ -421,4 +468,4 @@ body {
 .slide-in-left {
   will-change: transform, opacity;
   animation: slideFromLeft 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
+    }
