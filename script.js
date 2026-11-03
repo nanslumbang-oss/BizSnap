@@ -441,9 +441,33 @@ function initApp() {
   });
 }
 
+    // --- LOGIKA MENU BURGER ---
+    const menuToggle = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+      
+      if (sideMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+    if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+  }
+}
+
 // JALANKAN WEB
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initApp);
 } else {
   initApp();
-        }
+}
