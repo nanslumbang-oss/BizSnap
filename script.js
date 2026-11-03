@@ -1065,6 +1065,17 @@ function initApp() {
   if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
   if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
   if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+  
+  // KODE BARU: Biar menu otomatis nutup kalau link diklik
+const menuLinks = document.querySelectorAll('.side-menu-links a');
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    sideMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Biar layar bisa discroll lagi
+  });
+});
   // ------------------------------------
 } // <--- INI KURUNG KURAWAL YANG KELUPAAN TADI BANG! UDAH DIBENERIN.
 
