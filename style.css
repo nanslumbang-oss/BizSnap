@@ -120,3 +120,25 @@ body { background-color: var(--bg-main); color: var(--text-primary); padding-bot
 .side-menu-links { display: flex; flex-direction: column; gap: 10px; }
 .side-menu-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.95rem; font-weight: 600; padding: 14px 16px; border-radius: 12px; display: flex; align-items: center; gap: 12px; }
 .side-menu-links a:hover { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); }
+
+/* ========================================== */
+/* BLOK 8: TOMBOL KEMBALI (HALAMAN BARU)      */
+/* ========================================== */
+.btn-back {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+.btn-back:hover {
+  background: var(--bg-hover);
+  color: var(--accent-cyan);
+}
