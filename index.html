@@ -3,116 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BizSnap - Direktori UMKM & Cafe</title>
-      <!-- Vector Icons Font Awesome -->
+  <title>BizSnap - Direktori UMKM & Perusahaan</title>
+  
+  <!-- FontAwesome 6 Icon CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Font Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <!-- Style Utama -->
   <link rel="stylesheet" href="style.css">
 </head>
-  
 <body>
 
   <!-- ========================================== -->
-  <!-- [SEKSI 1] HEADER & NAVIGASI FIXED          -->
+  <!-- [BLOK 1] NAVBAR / HEADER BIZSNAP          -->
   <!-- ========================================== -->
   <header class="navbar">
-    <div class="brand-box">
-      <div class="brand-header">
-        <img src="logo.jpg" alt="BizSnap Logo" class="brand-logo">
-        <h1 class="brand-title">BIZSNAP</h1>
-      </div>
-      <p class="brand-sub">Direktori UMKM & Perusahaan</p>
-    </div>
-
-    <!-- Search Box -->
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Cari nama tempat yang ingin dituju...">
-    </div>
-
-    <!-- Filter Dropdown Bar -->
-    <div class="filter-trigger-bar">
-      <!-- Dropdown Kategori -->
-      <div class="dropdown-wrapper">
-        <button class="btn-dropdown" onclick="toggleMenu('catMenu', event)">
-          <span class="btn-content">
-            <i class="fa-solid fa-layer-group icon-left" id="iconCategory"></i>
-            <span id="labelCategory">Pilih Kategori</span>
-          </span>
-          <i class="fa-solid fa-chevron-down arrow"></i>
-        </button>
-        <div class="dropdown-pop" id="catMenu">
-          <button class="pop-item active" onclick="selectCategory('all', 'Semua Kategori', 'fa-solid fa-border-all', this)">
-            <i class="fa-solid fa-border-all pop-icon"></i> Semua Kategori
-          </button>
-          <button class="pop-item" onclick="selectCategory('Cafe', 'Cafe', 'fa-solid fa-mug-hot', this)">
-            <i class="fa-solid fa-mug-hot pop-icon"></i> Cafe
-          </button>
-        </div>
-      </div>
-
-      <!-- Dropdown Lokasi -->
-      <div class="dropdown-wrapper">
-        <button class="btn-dropdown" onclick="toggleMenu('locMenu', event)">
-          <span class="btn-content">
-            <i class="fa-solid fa-location-dot icon-left" id="iconLocation"></i>
-            <span id="labelLocation">Pilih Lokasi</span>
-          </span>
-          <i class="fa-solid fa-chevron-down arrow"></i>
-        </button>
-        <div class="dropdown-pop" id="locMenu">
-          <div id="provView">
-            <button class="pop-item active" onclick="selectLocation('all', 'all', 'Semua Lokasi', 'fa-solid fa-globe', this)">
-              <i class="fa-solid fa-globe pop-icon"></i> Semua Lokasi
-            </button>
-            <button class="pop-item flex-between" onclick="openCities('Jawa Timur')">
-              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Timur</span>
-              <i class="fa-solid fa-chevron-right arrow-right"></i>
-            </button>
-            <button class="pop-item flex-between" onclick="openCities('Jawa Tengah')">
-              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Tengah</span>
-              <i class="fa-solid fa-chevron-right arrow-right"></i>
-            </button>
-            <button class="pop-item flex-between" onclick="openCities('Jawa Barat')">
-              <span><i class="fa-solid fa-map-pin pop-icon"></i> Jawa Barat</span>
-              <i class="fa-solid fa-chevron-right arrow-right"></i>
-            </button>
-          </div>
-
-          <div id="cityView-Jatim" class="city-group" style="display: none;">
-            <button class="pop-item btn-back" onclick="backToProv()">
-              <i class="fa-solid fa-arrow-left pop-icon"></i> Kembali ke Provinsi
-            </button>
-            <div class="pop-divider">Kota di Jawa Timur:</div>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'all', 'Semua Jawa Timur', 'fa-solid fa-map-location-dot', this)">
-              <i class="fa-solid fa-map-location-dot pop-icon"></i> Semua Jawa Timur
-            </button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Malang', 'Malang', 'fa-solid fa-location-dot', this)">Malang</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Surabaya', 'Surabaya', 'fa-solid fa-location-dot', this)">Surabaya</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Batu', 'Batu', 'fa-solid fa-location-dot', this)">Batu</button>
-            <button class="pop-item" onclick="selectLocation('Jawa Timur', 'Pasuruan', 'Pasuruan', 'fa-solid fa-location-dot', this)">Pasuruan</button>
-          </div>
+    <div class="nav-container">
+      <div class="brand-logo">
+        <i class="fa-solid fa-store logo-icon"></i>
+        <div class="brand-text">
+          <h1 class="brand-title">BIZSNAP</h1>
+          <p class="brand-subtitle">Direktori UMKM & Perusahaan</p>
         </div>
       </div>
     </div>
   </header>
 
   <!-- ========================================== -->
-  <!-- [SEKSI 2] CONTAINER GRID KARTU UMKM       -->
+  <!-- [BLOK 2] SEARCH & FILTER BAR             -->
   <!-- ========================================== -->
-  <main class="container">
-    <div class="grid-container" id="gridContainer">
-      <!-- Di-render dari script.js -->
+  <section class="filter-section">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" placeholder="Cari nama tempat, lokasi, atau kata kunci...">
+    </div>
+
+    <div class="filter-group">
+      <div class="select-wrapper">
+        <i class="fa-solid fa-layer-group select-icon"></i>
+        <select id="categoryFilter" class="filter-select">
+          <option value="all">Semua Kategori</option>
+          <option value="Cafe">Cafe & Coffee Shop</option>
+        </select>
+      </div>
+
+      <div class="select-wrapper">
+        <i class="fa-solid fa-location-dot select-icon"></i>
+        <select id="locationFilter" class="filter-select">
+          <option value="all">Semua Lokasi</option>
+          <option value="Malang">Malang</option>
+          <option value="Batu">Batu</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- [BLOK 3] GRID CARD CONTAINER               -->
+  <!-- ========================================== -->
+  <main class="main-content">
+    <div id="umkmContainer" class="grid-container">
+      <!-- Di-render otomatis lewat script.js -->
     </div>
   </main>
 
   <!-- ========================================== -->
-  <!-- [SEKSI 3] MODAL POP-UP DETAIL TEMPAT       -->
+  <!-- [BLOK 4] MODAL DETAIL POPUP               -->
   <!-- ========================================== -->
-  <div class="modal-overlay" id="detailModal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
+  <div id="detailModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
       <div id="modalBody">
-        <!-- Di-render dari script.js -->
+        <!-- Injeksi via JS -->
       </div>
     </div>
   </div>
