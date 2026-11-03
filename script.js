@@ -300,18 +300,15 @@ function renderCards() {
     return;
   }
 
-    filtered.forEach(item => {
+      filtered.forEach(item => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
-
-    // Fallback gambar jika bgImage masih null/proses loading
-    const imageSrc = item.bgImage || 'https://via.placeholder.com/800x450/1e293b/38bdf8?text=Loading+Foto+Google...';
 
     const card = document.createElement('div');
     card.className = 'umkm-card animated';
     card.innerHTML = `
-      <img src="${imageSrc}" id="img-card-${item.id}" alt="${item.name}" class="card-banner">
-      <div class="card-body">      
+      <img src="${item.bgImage}" id="img-card-${item.id}" alt="${item.name}" class="card-banner">
+      <div class="card-body">
         <div class="card-badge-group">
           <span class="card-badge">${item.category}</span>
           <span class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
