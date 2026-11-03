@@ -8,7 +8,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.9 (4.500+ Ulasan)",
+    ratingScore: "4.9",
+    ratingReviews: "(4.500+ ulasan)",
     address: "Jl. Mayjend Panjaitan No.75, Klojen, Kota Malang",
     desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
     bgImage: "https://lh3.googleusercontent.com/grass-cs/AABkmLdAP9FaDyS38962i8R8aczHSHmHpJZDWK9Y-XLe9w5k3NuI_X54IHPn0sGWpmxj-xdP2uMWmAOKvWGPCshEH8hHq6rKb5P2jZ-iruiNnvDTyordHWusj6JDwuqW0eqEuPpOuQnqbhO_u7Y8=s1360-w720-h1360-rw",
@@ -29,7 +30,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.5 (940+ Ulasan)",
+    ratingScore: "4.5",
+    ratingReviews: "(940+ ulasan)",
     address: "Jl. Trunojoyo No.23, Klojen, Kota Malang (Dekat Stasiun)",
     desc: "Kedai kopi peranakan klasik dekat Stasiun Malang dengan sajian kopi butter & roti bakar.",
     bgImage: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
@@ -50,7 +52,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.6 (2.600+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(2.600+ ulasan)",
     address: "Jl. Bandung No.28, Klojen, Kota Malang",
     desc: "Space nongkrong estetik di Jl. Bandung Malang dengan area outdoor luas & menu beragam.",
     bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
@@ -71,7 +74,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.5 (5.700+ Ulasan)",
+    ratingScore: "4.5",
+    ratingReviews: "(5.700+ ulasan)",
     address: "Jl. Joyo Agung No.1, Tlogomas, Lowokwaru, Kota Malang",
     desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
     bgImage: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80",
@@ -92,7 +96,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.7 (1.800+ Ulasan)",
+    ratingScore: "4.7",
+    ratingReviews: "(1.800+ ulasan)",
     address: "Jl. Sunandar Priyo Sudarmo No.75, Blimbing, Kota Malang",
     desc: "Cafe ala Jepang industrial modern di kawasan tenang Malang dengan area indoor & outdoor estetik.",
     bgImage: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80",
@@ -113,7 +118,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.6 (3.100+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(3.100+ ulasan)",
     address: "Jl. Soekarno Hatta No.25, Mojolangu, Lowokwaru, Kota Malang",
     desc: "Salah satu pioneer coffee eatery estetik di jalur pusat kuliner Soekarno Hatta Malang.",
     bgImage: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80",
@@ -134,7 +140,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.6 (2.400+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(2.400+ ulasan)",
     address: "Jl. Bogor No.11, Sumbersari, Lowokwaru, Kota Malang",
     desc: "Kedai kopi legendaris favorit mahasiswa UM & UB dengan suasana homey dan rimbun.",
     bgImage: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80",
@@ -155,7 +162,8 @@ const cafeMalangData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Malang",
-    rating: "⭐ 4.6 (1.900+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(1.900+ ulasan)",
     address: "Jl. Kenanga Indah No.1, Jatimulyo, Lowokwaru, Kota Malang",
     desc: "Cafe tersembunyi bernuansa kebun tropis (hidden gem) yang super sejuk & asri.",
     bgImage: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=800&q=80",
@@ -182,7 +190,8 @@ const cafeBatuData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Batu",
-    rating: "⭐ 4.6 (2.500+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(2.500+ ulasan)",
     address: "Jl. Srigading No.10, Kaliputih, Desa Tulungrejo, Bumiaji, Kota Batu",
     desc: "Cafe vintage unik berkonsep eco-friendly penuh tanaman hias & ornamen daur ulang di dataran tinggi Batu.",
     bgImage: "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?auto=format&fit=crop&w=800&q=80",
@@ -203,7 +212,8 @@ const cafeBatuData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Batu",
-    rating: "⭐ 4.5 (6.000+ Ulasan)",
+    ratingScore: "4.5",
+    ratingReviews: "(6.000+ ulasan)",
     address: "Jl. Panglima Sudirman No.116, Pesanggrahan, Kota Batu",
     desc: "Cafe & resto outdoor legendaris di Batu dengan pemandangan langsung ke hamparan sawah & pegunungan.",
     bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
@@ -224,7 +234,8 @@ const cafeBatuData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Batu",
-    rating: "⭐ 4.6 (3.000+ Ulasan)",
+    ratingScore: "4.6",
+    ratingReviews: "(3.000+ ulasan)",
     address: "Jl. Gondorejo No.1, Oro-Oro Ombo, Kota Batu",
     desc: "Space nongkrong megah bernuansa tropis Mediterania dengan latar pemandangan Gunung Panderman.",
     bgImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
@@ -245,7 +256,8 @@ const cafeBatuData = [
     category: "Cafe",
     province: "Jawa Timur",
     location: "Batu",
-    rating: "⭐ 4.5 (1.200+ Ulasan)",
+    ratingScore: "4.5",
+    ratingReviews: "(1.200+ ulasan)",
     address: "Amarta Hills Hotel, Jl. Lucerne No.51, Ngaglik, Kota Batu",
     desc: "Rooftop skylounge mewah di lereng gunung Batu dengan pemandangan panoramic city light yang spektakuler.",
     bgImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80",
@@ -269,18 +281,19 @@ const umkmData = [...cafeMalangData, ...cafeBatuData];
 let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 
 // ==========================================
-// [BLOK 2] RENDER KARTU UMKM
+// [BLOK 2] RENDER KARTU DENGAN VECTOR ICON
 // ==========================================
 function renderCards(data) {
   const container = document.getElementById('umkmContainer');
   if (!container) return;
+  
   container.innerHTML = '';
 
   if (data.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
-        <i class="fa-solid fa-store-slash" style="font-size: 3rem; margin-bottom: 10px; color: #64748b;"></i>
-        <p>Tempat yang kamu cari tidak ditemukan.</p>
+      <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; color: #94a3b8;">
+        <i class="fa-solid fa-store-slash" style="font-size: 2.8rem; margin-bottom: 12px; color: #64748b;"></i>
+        <p style="font-size: 0.9rem;">Tempat yang kamu cari tidak ditemukan.</p>
       </div>
     `;
     return;
@@ -292,21 +305,25 @@ function renderCards(data) {
 
     const card = document.createElement('div');
     card.className = 'umkm-card slide-in-left';
-    // Menambahkan delay bergiliran untuk animasi gulir dari kiri
-    card.style.animationDelay = `${index * 0.08}s`;
+    card.style.animationDelay = `${index * 0.05}s`;
 
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
       <div class="card-body">
         <div class="card-badge-group">
-          <span class="badge category">${item.category.toUpperCase()}</span>
+          <span class="badge category"><i class="fa-solid fa-mug-saucer"></i> ${item.category.toUpperCase()}</span>
           <span class="badge location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
         </div>
         <h3 class="card-title">${item.name}</h3>
+        <div class="card-rating-row">
+          <i class="fa-solid fa-star"></i>
+          <strong>${item.ratingScore}</strong>
+          <span>${item.ratingReviews}</span>
+        </div>
         <p class="card-desc">${item.desc}</p>
         <div class="card-actions">
           <button class="btn btn-primary" onclick="openModal(${item.id})">
-            <i class="fa-solid fa-eye"></i> Lihat Detail
+            <i class="fa-solid fa-eye"></i> Detail
           </button>
           <button class="btn btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
             <i class="fa-solid fa-heart"></i> ${totalLikes}
@@ -319,7 +336,7 @@ function renderCards(data) {
 }
 
 // ==========================================
-// [BLOK 3] INTERAKSI LIKE & MODAL DETAIL
+// [BLOK 3] INTERAKSI LIKE & MODAL POPUP
 // ==========================================
 function toggleLike(id) {
   if (savedLikes[id]) {
@@ -337,25 +354,42 @@ function openModal(id) {
 
   const modal = document.getElementById('detailModal');
   const modalBody = document.getElementById('modalBody');
+  if (!modal || !modalBody) return;
 
-  const reviewsHTML = item.reviews.map(r => `<li><i class="fa-solid fa-comment-dots"></i> "${r}"</li>`).join('');
+  const reviewsHTML = item.reviews.map(r => `<li><i class="fa-solid fa-quote-left"></i> <span>"${r}"</span></li>`).join('');
 
   modalBody.innerHTML = `
     <img src="${item.bgImage}" alt="${item.name}" class="modal-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
-    <div class="modal-content-padding">
-      <h2>${item.name}</h2>
-      <p class="modal-rating">${item.rating}</p>
-      <p class="modal-address"><i class="fa-solid fa-map-pin"></i> ${item.address}</p>
-      <p class="modal-desc">${item.desc}</p>
+    <div class="modal-body-inner">
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #f8fafc; margin-bottom: 6px;">${item.name}</h2>
       
-      <div class="modal-section">
-        <h4>Ulasan Pengunjung</h4>
-        <ul class="modal-reviews">${reviewsHTML}</ul>
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #fbbf24; margin-bottom: 10px;">
+        <i class="fa-solid fa-star"></i>
+        <strong>${item.ratingScore}</strong>
+        <span style="color: #94a3b8;">${item.ratingReviews}</span>
       </div>
 
-      <div class="modal-links">
-        <a href="${item.mapsUrl}" target="_blank" class="btn btn-maps"><i class="fa-solid fa-map-location-dot"></i> Buka Google Maps</a>
-        <a href="${item.webUrl}" target="_blank" class="btn btn-web"><i class="fa-brands fa-instagram"></i> Instagram Resmi</a>
+      <p style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 6px;">
+        <i class="fa-solid fa-map-pin" style="color: #38bdf8; margin-top: 3px;"></i>
+        <span>${item.address}</span>
+      </p>
+
+      <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 16px;">${item.desc}</p>
+      
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; margin-top: 14px;">
+        <h4 style="font-size: 0.85rem; font-weight: 700; color: #f8fafc; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <i class="fa-solid fa-comments" style="color: #38bdf8;"></i> Ulasan Pengunjung
+        </h4>
+        <ul class="modal-reviews-list">${reviewsHTML}</ul>
+      </div>
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <a href="${item.mapsUrl}" target="_blank" class="btn" style="flex:1; background: #0284c7; color: #fff; text-decoration: none;">
+          <i class="fa-solid fa-map-location-dot"></i> Google Maps
+        </a>
+        <a href="${item.webUrl}" target="_blank" class="btn" style="flex:1; background: rgba(225, 48, 108, 0.15); color: #e1306c; border: 1px solid rgba(225, 48, 108, 0.3); text-decoration: none;">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
       </div>
     </div>
   `;
@@ -369,7 +403,7 @@ function closeModal() {
 }
 
 // ==========================================
-// [BLOK 4] FILTER & PENCARIAN
+// [BLOK 4] LOGIKA FILTER & PENCARIAN
 // ==========================================
 function filterData() {
   const categoryVal = document.getElementById('categoryFilter')?.value || 'all';
@@ -392,7 +426,7 @@ function filterData() {
 // ==========================================
 // [BLOK 5] INITIALIZATION
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   renderCards(umkmData);
 
   document.getElementById('categoryFilter')?.addEventListener('change', filterData);
@@ -403,5 +437,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('detailModal');
     if (e.target === modal) closeModal();
   });
-});
-    
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
