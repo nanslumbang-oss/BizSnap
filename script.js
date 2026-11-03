@@ -296,10 +296,11 @@ function initApp() {
   if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
   if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
   // ------------------------------------
+} // <--- INI KURUNG KURAWAL YANG KELUPAAN TADI BANG! UDAH DIBENERIN.
 
-  // JALANKAN WEB
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
-  } else {
-    initApp();
-      }
+// JALANKAN WEB
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+    }
