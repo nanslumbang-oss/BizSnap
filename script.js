@@ -11,7 +11,7 @@ const cafeMalangData = [
     rating: "⭐ 4.9 (4.500+ Ulasan)",
     address: "Jl. Mayjend Panjaitan No.75, Klojen, Kota Malang",
     desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipN4T5YF70G0iX5A1Kk7h6O5gWv8S3dE9m8K7L6M=s800-w800",
+    bgImage: "https://lh3.googleusercontent.com/grass-cs/AABkmLdAP9FaDyS38962i8R8aczHSHmHpJZDWK9Y-XLe9w5k3NuI_X54IHPn0sGWpmxj-xdP2uMWmAOKvWGPCshEH8hHq6rKb5P2jZ-iruiNnvDTyordHWusj6JDwuqW0eqEuPpOuQnqbhO_u7Y8=s1360-w720-h1360-rw",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nakoa+Cafe+Panjaitan+Malang",
     webUrl: "https://instagram.com/nakoa.id",
     likes: 452,
