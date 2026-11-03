@@ -270,17 +270,18 @@ const umkmData = [
   ...cafeBatuData
 ];
 
+let currentCategory = 'all';
+let currentProvince = 'all';
+let currentCity = 'all';
+let searchQuery = '';
 
 // ==========================================
-// [BLOK 2] ELEMEN DOM
-// ==========================================
-const gridContainer = document.getElementById('gridContainer');
-const searchInput = document.getElementById('searchInput');
-
-// ==========================================
-// [BLOK 3] RENDER KARTU KE LAYAR GRID
+// [BLOK 2] RENDER KARTU KE LAYAR GRID
 // ==========================================
 function renderCards() {
+  const gridContainer = document.getElementById('gridContainer');
+  if (!gridContainer) return;
+
   gridContainer.innerHTML = '';
   const savedLikes = getSavedLikes();
 
@@ -304,7 +305,7 @@ function renderCards() {
     const totalLikes = item.likes + (isLiked ? 1 : 0);
 
     const card = document.createElement('div');
-    card.className = 'umkm-card';
+    card.className = 'umkm-card animated';
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner">
       <div class="card-body">
@@ -326,28 +327,10 @@ function renderCards() {
     `;
     gridContainer.appendChild(card);
   });
-
-  setTimeout(initScrollAnimation, 50);
 }
 
 // ==========================================
-// [BLOK 4] ANIMASI SCROLL 60FPS
-// ==========================================
-function initScrollAnimation() {
-  const cards = document.querySelectorAll('.umkm-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animated');
-      }
-    });
-  }, { threshold: 0.05 });
-
-  cards.forEach(card => observer.observe(card));
-}
-
-// ==========================================
-// [BLOK 5] INTERAKSI & MODAL POP-UP
+// [BLOK 3] INTERAKSI & MODAL POP-UP
 // ==========================================
 function getSavedLikes() {
   return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
@@ -360,13 +343,6 @@ function toggleLike(id) {
   renderCards();
 }
 
-if (searchInput) {
-  searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value.toLowerCase();
-    renderCards();
-  });
-}
-
 function toggleMenu(id, event) {
   if (event) event.stopPropagation();
   const target = document.getElementById(id);
@@ -376,7 +352,7 @@ function toggleMenu(id, event) {
     if (m !== target) m.classList.remove('show');
   });
   
-  target.classList.toggle('show');
+  if (target) target.classList.toggle('show');
 }
 
 function selectCategory(catKey, labelText, iconClass, btn) {
@@ -457,16 +433,29 @@ function closeModal() {
   document.getElementById('detailModal').classList.remove('show');
 }
 
-document.getElementById('detailModal').addEventListener('click', (e) => {
-  if (e.target.id === 'detailModal') closeModal();
-});
-
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.dropdown-wrapper')) {
-    document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
+// Inisialisasi Event Listener setelah DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase();
+      renderCards();
+    });
   }
-});
 
-// Jalankan awal
-renderCards();
-      
+  const detailModal = document.getElementById('detailModal');
+  if (detailModal) {
+    detailModal.addEventListener('click', (e) => {
+      if (e.target.id === 'detailModal') closeModal();
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-wrapper')) {
+      document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
+    }
+  });
+
+  // Render kartu awal
+  renderCards();
+});
