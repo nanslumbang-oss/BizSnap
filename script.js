@@ -281,7 +281,7 @@ const umkmData = [...cafeMalangData, ...cafeBatuData];
 let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 
 // ==========================================
-// [BLOK 2] RENDER KARTU DENGAN VECTOR ICON
+// [BLOK 2] RENDER KARTU DENGAN ANIMASI 90 FPS
 // ==========================================
 function renderCards(data) {
   const container = document.getElementById('umkmContainer');
@@ -305,7 +305,7 @@ function renderCards(data) {
 
     const card = document.createElement('div');
     card.className = 'umkm-card slide-in-left';
-    card.style.animationDelay = `${index * 0.05}s`;
+    card.style.animationDelay = `${index * 0.06}s`;
 
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
@@ -443,4 +443,5 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initApp);
 } else {
   initApp();
-}
+    }
+  
