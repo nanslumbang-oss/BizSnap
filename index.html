@@ -27,7 +27,15 @@
           <p class="brand-subtitle">Direktori UMKM & Perusahaan</p>
         </div>
       </div>
+      
+       <!-- TOMBOL BURGER (GARIS 3) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </div>
+   
 
     <div class="filter-section">
       <!-- KOLOM PENCARIAN -->
@@ -81,6 +89,24 @@
       <div id="modalBody"></div>
     </div>
   </div>
+
+  <!-- ========================================== -->
+<!-- MENU SAMPING (SIDE DRAWER)                 -->
+<!-- ========================================== -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-header">
+    <h2>Menu</h2>
+    <button class="close-menu" id="closeMenu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="side-menu-links">
+    <a href="#"><i class="fa-solid fa-house"></i> Beranda</a>
+    <a href="#"><i class="fa-solid fa-circle-info"></i> Tentang Kami</a>
+    <a href="#"><i class="fa-solid fa-heart"></i> Favorit Saya</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Hubungi Kami</a>
+  </div>
+</div>
 
   <script src="script.js"></script>
 </body>
