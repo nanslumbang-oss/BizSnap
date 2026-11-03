@@ -277,7 +277,9 @@ const cafeBatuData = [
 // Combine Master Data
 const umkmData = [...cafeMalangData, ...cafeBatuData];
 
-// Storage State Likes
+// State Filter & Likes
+let selectedCategory = 'all';
+let selectedLocation = 'all';
 let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 
 // ==========================================
@@ -305,7 +307,7 @@ function renderCards(data) {
 
     const card = document.createElement('div');
     card.className = 'umkm-card slide-in-left';
-    card.style.animationDelay = `${index * 0.06}s`;
+    card.style.animationDelay = `${index * 0.05}s`;
 
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
@@ -406,13 +408,11 @@ function closeModal() {
 // [BLOK 4] LOGIKA FILTER & PENCARIAN
 // ==========================================
 function filterData() {
-  const categoryVal = document.getElementById('categoryFilter')?.value || 'all';
-  const locationVal = document.getElementById('locationFilter')?.value || 'all';
   const searchVal = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
 
   const filtered = umkmData.filter(item => {
-    const matchCategory = (categoryVal === 'all') || (item.category.toLowerCase() === categoryVal.toLowerCase());
-    const matchLocation = (locationVal === 'all') || (item.location.toLowerCase() === locationVal.toLowerCase());
+    const matchCategory = (selectedCategory === 'all') || (item.category.toLowerCase() === selectedCategory.toLowerCase());
+    const matchLocation = (selectedLocation === 'all') || (item.location.toLowerCase() === selectedLocation.toLowerCase());
     const matchSearch = item.name.toLowerCase().includes(searchVal) || 
                         item.desc.toLowerCase().includes(searchVal) ||
                         item.address.toLowerCase().includes(searchVal);
@@ -423,14 +423,52 @@ function filterData() {
   renderCards(filtered);
 }
 
+// Setup Custom Dropdowns
+function setupCustomDropdowns() {
+  const setupDropdown = (dropdownId, labelId, onSelect) => {
+    const dropdown = document.getElementById(dropdownId);
+    const trigger = dropdown?.querySelector('.dropdown-trigger');
+    const label = document.getElementById(labelId);
+    const items = dropdown?.querySelectorAll('.dropdown-item');
+
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.custom-dropdown').forEach(d => {
+        if (d !== dropdown) d.classList.remove('open');
+      });
+      dropdown.classList.toggle('open');
+    });
+
+    items?.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        
+        if (label) label.textContent = item.textContent;
+        const val = item.getAttribute('data-value');
+        onSelect(val);
+        dropdown.classList.remove('open');
+        filterData();
+      });
+    });
+  };
+
+  setupDropdown('dropdownCategory', 'categoryLabel', (val) => { selectedCategory = val; });
+  setupDropdown('dropdownLocation', 'locationLabel', (val) => { selectedLocation = val; });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
+  });
+}
+
 // ==========================================
 // [BLOK 5] INITIALIZATION
 // ==========================================
 function initApp() {
   renderCards(umkmData);
+  setupCustomDropdowns();
 
-  document.getElementById('categoryFilter')?.addEventListener('change', filterData);
-  document.getElementById('locationFilter')?.addEventListener('change', filterData);
   document.getElementById('searchInput')?.addEventListener('input', filterData);
 
   window.addEventListener('click', (e) => {
@@ -443,4 +481,4 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initApp);
 } else {
   initApp();
-          }
+}
