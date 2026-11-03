@@ -338,12 +338,10 @@ function initScrollAnimation() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
+        entry.target.classList.add('animated');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
 
   cards.forEach(card => observer.observe(card));
 }
