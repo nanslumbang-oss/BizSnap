@@ -15,9 +15,9 @@
 <body>
 
   <!-- ========================================== -->
-  <!-- [BLOK 1] NAVBAR / HEADER BIZSNAP          -->
+  <!-- [HEADER STICKY] LOGO + SEARCH + FILTER     -->
   <!-- ========================================== -->
-  <header class="navbar">
+  <header class="sticky-header">
     <div class="nav-container">
       <div class="brand-logo">
         <i class="fa-solid fa-store logo-icon"></i>
@@ -27,39 +27,36 @@
         </div>
       </div>
     </div>
+
+    <div class="filter-section">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Cari nama tempat, lokasi, atau kata kunci...">
+      </div>
+
+      <div class="filter-group">
+        <div class="select-wrapper">
+          <i class="fa-solid fa-layer-group select-icon"></i>
+          <select id="categoryFilter" class="filter-select">
+            <option value="all">Semua Kategori</option>
+            <option value="Cafe">Cafe & Coffee Shop</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <i class="fa-solid fa-location-dot select-icon"></i>
+          <select id="locationFilter" class="filter-select">
+            <option value="all">Semua Lokasi</option>
+            <option value="Malang">Malang</option>
+            <option value="Batu">Batu</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- ========================================== -->
-  <!-- [BLOK 2] SEARCH & FILTER BAR             -->
-  <!-- ========================================== -->
-  <section class="filter-section">
-    <div class="search-box">
-      <i class="fa-solid fa-magnifying-glass search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Cari nama tempat, lokasi, atau kata kunci...">
-    </div>
-
-    <div class="filter-group">
-      <div class="select-wrapper">
-        <i class="fa-solid fa-layer-group select-icon"></i>
-        <select id="categoryFilter" class="filter-select">
-          <option value="all">Semua Kategori</option>
-          <option value="Cafe">Cafe & Coffee Shop</option>
-        </select>
-      </div>
-
-      <div class="select-wrapper">
-        <i class="fa-solid fa-location-dot select-icon"></i>
-        <select id="locationFilter" class="filter-select">
-          <option value="all">Semua Lokasi</option>
-          <option value="Malang">Malang</option>
-          <option value="Batu">Batu</option>
-        </select>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================== -->
-  <!-- [BLOK 3] GRID CARD CONTAINER               -->
+  <!-- [GRID CARD CONTAINER]                      -->
   <!-- ========================================== -->
   <main class="main-content">
     <div id="umkmContainer" class="grid-container">
@@ -68,7 +65,7 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- [BLOK 4] MODAL DETAIL POPUP               -->
+  <!-- [MODAL DETAIL POPUP]                       -->
   <!-- ========================================== -->
   <div id="detailModal" class="modal-overlay">
     <div class="modal-card">
