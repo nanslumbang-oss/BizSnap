@@ -247,11 +247,7 @@ const umkmData = [
       "Kopi dan steak-nya kualitas hotel berbintang.",
       "Pelayanan ramah dan tempatnya sangat eksklusif."
     ]
-  }
-  // ==========================================
-// DATA 30 TEMPAT RANDOM (JATIM, JATENG, JABAR)
-// ==========================================
-const randomBusinessData = [
+  },
   {
     id: 13,
     name: "House of Danar Hadi",
