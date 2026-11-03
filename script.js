@@ -892,6 +892,7 @@ function toggleLike(id) {
 
 function filterData() {
   const searchVal = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
+  
   const filtered = umkmData.filter(item => {
     const matchCategory = (selectedCategory === 'all') || (item.category.toLowerCase() === selectedCategory.toLowerCase());
     let matchLocation = false;
@@ -899,11 +900,12 @@ function filterData() {
     else if (selectedProvince !== 'all') { matchLocation = item.province.toLowerCase() === selectedProvince.toLowerCase(); } 
     else { matchLocation = true; }
     const matchSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+    
     return matchCategory && matchLocation && matchSearch;
   });
+  
   renderCards(filtered);
 }
-
 function debounce(func, wait) {
   let timeout;
   return function(...args) { clearTimeout(timeout); timeout = setTimeout(() => func(...args), wait); };
@@ -1028,63 +1030,72 @@ function closeModal() {
 // BLOK 5: FUNGSI UTAMA (MENYALAKAN WEB)
 // ==========================================
 function initApp() {
-  renderCards(umkmData); 
-  setupCategoryDropdown(); 
-  setupLocationDropdown(); 
+  // 1. Cek apakah kita sedang di halaman favorit.html
+  const isFavoritPage = window.location.pathname.includes('favorit.html');
 
+  if (isFavoritPage) {
+    // Kalau di halaman favorit, HANYA tampilkan data yang di-like
+    const favoritesData = umkmData.filter(item => savedLikes[item.id] === true);
+    renderCards(favoritesData);
+    
+    // Sembunyikan kolom search & filter karena halaman ini khusus favorit
+    const filterSection = document.querySelector('.filter-section');
+    if (filterSection) filterSection.style.display = 'none';
+    
+  } else {
+    // Kalau di halaman utama (index.html), jalankan seperti biasa
+    renderCards(umkmData); 
+    setupCategoryDropdown(); 
+    setupLocationDropdown(); 
+
+    // Aktifkan fitur search
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.addEventListener('input', debounce(filterData, 300));
+  }
+
+  // 2. Logika Tombol Detail & Like di Kartu (Berlaku di semua halaman)
   const container = document.getElementById('umkmContainer');
   if (container) {
     container.addEventListener('click', (e) => {
       const detailBtn = e.target.closest('.btn-detail');
       const likeBtn = e.target.closest('.btn-toggle-like');
-      if (detailBtn) openModal(parseInt(detailBtn.dataset.id));
-      else if (likeBtn) toggleLike(parseInt(likeBtn.dataset.id));
+      
+      if (detailBtn) {
+        openModal(parseInt(detailBtn.dataset.id));
+      } else if (likeBtn) {
+        toggleLike(parseInt(likeBtn.dataset.id));
+        // Jika sedang di halaman favorit, refresh tampilan setelah like/unlike
+        if (isFavoritPage) {
+          const favoritesData = umkmData.filter(item => savedLikes[item.id] === true);
+          renderCards(favoritesData);
+        }
+      }
     });
   }
 
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput) searchInput.addEventListener('input', debounce(filterData, 300));
-
+  // 3. Tutup Modal jika klik di luar
   window.addEventListener('click', (e) => {
     if (e.target === document.getElementById('detailModal')) closeModal();
     document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
   });
 
- // --- LOGIKA MENU GARIS 3 (BURGER) ---
-const menuToggle = document.getElementById('menuToggle');
-const sideMenu = document.getElementById('sideMenu');
-const menuOverlay = document.getElementById('menuOverlay');
-const closeMenu = document.getElementById('closeMenu');
+  // 4. Logika Menu Burger
+  const menuToggle = document.getElementById('menuToggle');
+  const sideMenu = document.getElementById('sideMenu');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const closeMenu = document.getElementById('closeMenu');
 
-function toggleMenu() {
-  menuToggle.classList.toggle('active');
-  sideMenu.classList.toggle('active');
-  menuOverlay.classList.toggle('active');
-  document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+  function toggleMenu() {
+    menuToggle.classList.toggle('active');
+    sideMenu.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = sideMenu.classList.contains('active') ? 'hidden' : '';
+  }
+
+  if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+  if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
+  if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
 }
-
-if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
-if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
-if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
-
-// Aksi Tombol Favorit
-document.getElementById('navFavorit')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  isShowingFavorites = true;
-  
-  // 1. Reset semua filter biar gak kosong
-  document.getElementById('searchInput').value = '';
-  selectedCategory = 'all'; 
-  selectedProvince = 'all'; 
-  selectedCity = 'all';
-  document.getElementById('categoryLabel').textContent = 'Semua Kategori';
-  document.getElementById('locationLabel').textContent = 'Semua Lokasi';
-  
-  // 2. Tampilkan favorit & scroll ke atas
-  filterData(); 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  toggleMenu();
-});
   
 // ------------------------------------
   
