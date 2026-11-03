@@ -1067,11 +1067,22 @@ if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
 if (closeMenu) closeMenu.addEventListener('click', toggleMenu);
 if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
 
-// Aksi Tombol Favorit (Tetap di halaman yang sama)
+// Aksi Tombol Favorit
 document.getElementById('navFavorit')?.addEventListener('click', (e) => {
   e.preventDefault();
   isShowingFavorites = true;
-  filterData();
+  
+  // 1. Reset semua filter biar gak kosong
+  document.getElementById('searchInput').value = '';
+  selectedCategory = 'all'; 
+  selectedProvince = 'all'; 
+  selectedCity = 'all';
+  document.getElementById('categoryLabel').textContent = 'Semua Kategori';
+  document.getElementById('locationLabel').textContent = 'Semua Lokasi';
+  
+  // 2. Tampilkan favorit & scroll ke atas
+  filterData(); 
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   toggleMenu();
 });
   
