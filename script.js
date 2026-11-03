@@ -286,12 +286,15 @@ function renderCards(data) {
     return;
   }
 
-  data.forEach(item => {
+  data.forEach((item, index) => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
 
     const card = document.createElement('div');
-    card.className = 'umkm-card animated';
+    card.className = 'umkm-card slide-in-left';
+    // Menambahkan delay bergiliran untuk animasi gulir dari kiri
+    card.style.animationDelay = `${index * 0.08}s`;
+
     card.innerHTML = `
       <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
       <div class="card-body">
@@ -396,10 +399,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('locationFilter')?.addEventListener('change', filterData);
   document.getElementById('searchInput')?.addEventListener('input', filterData);
 
-  // Close modal when clicking outside content
   window.addEventListener('click', (e) => {
     const modal = document.getElementById('detailModal');
     if (e.target === modal) closeModal();
   });
 });
-      
+    
