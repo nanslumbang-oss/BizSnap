@@ -286,8 +286,11 @@ const formatNumber = (num) => {
   return num >= 1000 ? (num / 1000).toFixed(1) + 'k' : num;
 };
 
+// Taruh variabel observer di luar fungsi agar bisa di-reset
+let observer;
+
 // ==========================================
-// [BLOK 2] RENDER KARTU (Anti-XSS & Cleaner)
+// [BLOK 2] RENDER KARTU DENGAN SCROLL REVEAL
 // ==========================================
 function renderCards(data) {
   const container = document.getElementById('umkmContainer');
@@ -306,15 +309,35 @@ function renderCards(data) {
     return;
   }
 
+  // Reset observer jika ada (misal saat user ganti filter)
+  if (observer) observer.disconnect();
+
+  // Setup Intersection Observer (Mendeteksi Scroll)
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Jika elemen masuk ke layar, tambahkan class 'active'
+        entry.target.classList.add('active');
+        // Hentikan observasi setelah animasi berjalan agar hemat memori
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, {
+    threshold: 0.1, // Animasi jalan saat 10% kartu terlihat
+    rootMargin: "0px 0px -50px 0px" // Trigger sedikit lebih awal sebelum benar-benar di ujung layar
+  });
+
   data.forEach((item, index) => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
 
     const card = document.createElement('div');
-    card.className = 'umkm-card slide-in-left';
-    card.style.animationDelay = `${index * 0.05}s`;
+    // Menggunakan class 'reveal' sebagai state awal (tersembunyi di kiri)
+    card.className = 'umkm-card reveal'; 
+    
+    // Staggered delay: Kartu muncul bergantian dengan jeda 50ms (Efek mewah)
+    card.style.transitionDelay = `${(index % 10) * 0.05}s`; // Modulo 10 agar delay tidak terlalu lama saat list panjang
 
-    // Menggunakan data-attribute alih-alih inline onclick
     card.innerHTML = `
       <div style="overflow: hidden;">
         <img src="${item.bgImage}" alt="${item.name}" class="card-banner" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
@@ -342,6 +365,9 @@ function renderCards(data) {
       </div>
     `;
     container.appendChild(card);
+    
+    // Daftarkan kartu ke Observer untuk dipantau
+    observer.observe(card); 
   });
 }
 
