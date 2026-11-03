@@ -1,5 +1,5 @@
 // ==========================================
-// [BLOK 1A] DATA CAFE - MALANG (FOTO GMAPS)
+// [BLOK 1A] DATA CAFE - MALANG
 // ==========================================
 const cafeMalangData = [
   {
@@ -32,7 +32,7 @@ const cafeMalangData = [
     rating: "⭐ 4.5 (940+ Ulasan)",
     address: "Jl. Trunojoyo No.23, Klojen, Kota Malang (Dekat Stasiun)",
     desc: "Kedai kopi peranakan klasik dekat Stasiun Malang dengan sajian kopi butter & roti bakar.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipM5x9K8w2J1v0C3m4L5k6J7H8g9F0d1e2S3a4B5=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Toko+Kopi+Kongca+Malang",
     webUrl: "https://instagram.com/tokokopikongca",
     likes: 289,
@@ -53,7 +53,7 @@ const cafeMalangData = [
     rating: "⭐ 4.6 (2.600+ Ulasan)",
     address: "Jl. Bandung No.28, Klojen, Kota Malang",
     desc: "Space nongkrong estetik di Jl. Bandung Malang dengan area outdoor luas & menu beragam.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipP3o8R1k6N9m2K5J4L7f8G9d0E1s2A3b4C5d6E7=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=AADK+Coffee+Eatery+Bandung+Malang",
     webUrl: "https://instagram.com/aadk.coffeeeatery",
     likes: 310,
@@ -74,7 +74,7 @@ const cafeMalangData = [
     rating: "⭐ 4.5 (5.700+ Ulasan)",
     address: "Jl. Joyo Agung No.1, Tlogomas, Lowokwaru, Kota Malang",
     desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipO9m2K5J4L7f8G9d0E1s2A3b4C5d6E7f8G9h0I1=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bukit+Delight+Malang",
     webUrl: "https://instagram.com/bukitdelight",
     likes: 520,
@@ -95,7 +95,7 @@ const cafeMalangData = [
     rating: "⭐ 4.7 (1.800+ Ulasan)",
     address: "Jl. Sunandar Priyo Sudarmo No.75, Blimbing, Kota Malang",
     desc: "Cafe ala Jepang industrial modern di kawasan tenang Malang dengan area indoor & outdoor estetik.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipQ1x2Y3z4A5b6C7d8E9f0G1h2I3j4K5l6M7n8O9=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Robucca+Coffee+Malang",
     webUrl: "https://instagram.com/robucca.id",
     likes: 380,
@@ -116,7 +116,7 @@ const cafeMalangData = [
     rating: "⭐ 4.6 (3.100+ Ulasan)",
     address: "Jl. Soekarno Hatta No.25, Mojolangu, Lowokwaru, Kota Malang",
     desc: "Salah satu pioneer coffee eatery estetik di jalur pusat kuliner Soekarno Hatta Malang.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipR8S9T0u1V2w3X4y5Z6a7B8c9D0e1F2g3H4i5J6=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Labore+Coffee+Eatery+Malang",
     webUrl: "https://instagram.com/laborecoffeeeatery",
     likes: 410,
@@ -137,7 +137,7 @@ const cafeMalangData = [
     rating: "⭐ 4.6 (2.400+ Ulasan)",
     address: "Jl. Bogor No.11, Sumbersari, Lowokwaru, Kota Malang",
     desc: "Kedai kopi legendaris favorit mahasiswa UM & UB dengan suasana homey dan rimbun.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipT2u3V4w5X6y7Z8a9B0c1D2e3F4g5H6i7J8k9L0=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=DW+Coffee+Shop+Malang",
     webUrl: "https://instagram.com/dwcoffeeshop",
     likes: 295,
@@ -158,7 +158,7 @@ const cafeMalangData = [
     rating: "⭐ 4.6 (1.900+ Ulasan)",
     address: "Jl. Kenanga Indah No.1, Jatimulyo, Lowokwaru, Kota Malang",
     desc: "Cafe tersembunyi bernuansa kebun tropis (hidden gem) yang super sejuk & asri.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipV6w7X8y9Z0a1B2c3D4e5F6g7H8i9J0k1L2m3N4=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Gartenhaus+Co+Malang",
     webUrl: "https://instagram.com/gartenhausco",
     likes: 365,
@@ -173,7 +173,7 @@ const cafeMalangData = [
 ];
 
 // ==========================================
-// [BLOK 1B] DATA CAFE - BATU (FOTO GMAPS)
+// [BLOK 1B] DATA CAFE - BATU
 // ==========================================
 const cafeBatuData = [
   {
@@ -185,7 +185,7 @@ const cafeBatuData = [
     rating: "⭐ 4.6 (2.500+ Ulasan)",
     address: "Jl. Srigading No.10, Kaliputih, Desa Tulungrejo, Bumiaji, Kota Batu",
     desc: "Cafe vintage unik berkonsep eco-friendly penuh tanaman hias & ornamen daur ulang di dataran tinggi Batu.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipX8y9Z0a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Retrorika+Coffee+Bar+Resto+Batu",
     webUrl: "https://instagram.com/retrorika.id",
     likes: 412,
@@ -206,7 +206,7 @@ const cafeBatuData = [
     rating: "⭐ 4.5 (6.000+ Ulasan)",
     address: "Jl. Panglima Sudirman No.116, Pesanggrahan, Kota Batu",
     desc: "Cafe & resto outdoor legendaris di Batu dengan pemandangan langsung ke hamparan sawah & pegunungan.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipZ0a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pupuk+Bawang+Cafe+Dining+Batu",
     webUrl: "https://instagram.com/pupukbawangbatu",
     likes: 580,
@@ -227,7 +227,7 @@ const cafeBatuData = [
     rating: "⭐ 4.6 (3.000+ Ulasan)",
     address: "Jl. Gondorejo No.1, Oro-Oro Ombo, Kota Batu",
     desc: "Space nongkrong megah bernuansa tropis Mediterania dengan latar pemandangan Gunung Panderman.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipB2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Paolo+Fest+Batu",
     webUrl: "https://instagram.com/paolo.fest",
     likes: 490,
@@ -248,7 +248,7 @@ const cafeBatuData = [
     rating: "⭐ 4.5 (1.200+ Ulasan)",
     address: "Amarta Hills Hotel, Jl. Lucerne No.51, Ngaglik, Kota Batu",
     desc: "Rooftop skylounge mewah di lereng gunung Batu dengan pemandangan panoramic city light yang spektakuler.",
-    bgImage: "https://lh3.googleusercontent.com/p/AF1QipD4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0u1V2=s800-w800",
+    bgImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Fifteen+Celcius+Skylounge+Batu",
     webUrl: "https://instagram.com/15celcius",
     likes: 340,
@@ -262,201 +262,144 @@ const cafeBatuData = [
   }
 ];
 
+// Combine Master Data
+const umkmData = [...cafeMalangData, ...cafeBatuData];
+
+// Storage State Likes
+let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 
 // ==========================================
-// [BLOK 1C] GABUNGAN DATA & STATE UTAMA
+// [BLOK 2] RENDER KARTU UMKM
 // ==========================================
-const umkmData = [
-  ...cafeMalangData,
-  ...cafeBatuData
-];
+function renderCards(data) {
+  const container = document.getElementById('umkmContainer');
+  if (!container) return;
+  container.innerHTML = '';
 
-let currentCategory = 'all';
-let currentProvince = 'all';
-let currentCity = 'all';
-let searchQuery = '';
-
-// ==========================================
-// [BLOK 2] RENDER KARTU KE LAYAR GRID
-// ==========================================
-function renderCards() {
-  const gridContainer = document.getElementById('gridContainer');
-  if (!gridContainer) return;
-
-  gridContainer.innerHTML = '';
-  const savedLikes = getSavedLikes();
-
-  const filtered = umkmData.filter(item => {
-    const matchCategory = currentCategory === 'all' || item.category === currentCategory;
-    const matchProv = currentProvince === 'all' || item.province === currentProvince;
-    const matchCity = currentCity === 'all' || item.location === currentCity;
-    const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
-                        item.desc.toLowerCase().includes(searchQuery) ||
-                        item.location.toLowerCase().includes(searchQuery);
-    return matchCategory && matchProv && matchCity && matchSearch;
-  });
-
-  if (filtered.length === 0) {
-    gridContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding: 40px 0;">Tidak ada tempat yang ditemukan.</p>`;
+  if (data.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
+        <i class="fa-solid fa-store-slash" style="font-size: 3rem; margin-bottom: 10px; color: #64748b;"></i>
+        <p>Tempat yang kamu cari tidak ditemukan.</p>
+      </div>
+    `;
     return;
   }
 
-      filtered.forEach(item => {
+  data.forEach(item => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
 
     const card = document.createElement('div');
     card.className = 'umkm-card animated';
     card.innerHTML = `
-      <img src="${item.bgImage}" id="img-card-${item.id}" alt="${item.name}" class="card-banner">
+      <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
       <div class="card-body">
         <div class="card-badge-group">
-          <span class="card-badge">${item.category}</span>
-          <span class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
+          <span class="badge category">${item.category.toUpperCase()}</span>
+          <span class="badge location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
         </div>
         <h3 class="card-title">${item.name}</h3>
         <p class="card-desc">${item.desc}</p>
-        <div class="card-footer">
-          <button class="btn-detail" onclick="openModal(${item.id})">
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="openModal(${item.id})">
             <i class="fa-solid fa-eye"></i> Lihat Detail
           </button>
-          <button class="btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
+          <button class="btn btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
             <i class="fa-solid fa-heart"></i> ${totalLikes}
           </button>
         </div>
       </div>
     `;
-    gridContainer.appendChild(card);
+    container.appendChild(card);
   });
 }
 
 // ==========================================
-// [BLOK 3] INTERAKSI & MODAL POP-UP
+// [BLOK 3] INTERAKSI LIKE & MODAL DETAIL
 // ==========================================
-function getSavedLikes() {
-  return JSON.parse(localStorage.getItem('bizsnap_grid_likes')) || {};
-}
-
 function toggleLike(id) {
-  const savedLikes = getSavedLikes();
-  savedLikes[id] = !savedLikes[id];
-  localStorage.setItem('bizsnap_grid_likes', JSON.stringify(savedLikes));
-  renderCards();
-}
-
-function toggleMenu(id, event) {
-  if (event) event.stopPropagation();
-  const target = document.getElementById(id);
-  const allMenus = document.querySelectorAll('.dropdown-pop');
-  
-  allMenus.forEach(m => {
-    if (m !== target) m.classList.remove('show');
-  });
-  
-  if (target) target.classList.toggle('show');
-}
-
-function selectCategory(catKey, labelText, iconClass, btn) {
-  currentCategory = catKey;
-  document.getElementById('labelCategory').innerText = labelText;
-  if (iconClass) {
-    document.getElementById('iconCategory').className = iconClass + ' icon-left';
+  if (savedLikes[id]) {
+    delete savedLikes[id];
+  } else {
+    savedLikes[id] = true;
   }
-  document.querySelectorAll('#catMenu .pop-item').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  toggleMenu('catMenu');
-  renderCards();
+  localStorage.setItem('bizsnap_likes', JSON.stringify(savedLikes));
+  filterData();
 }
 
-function openCities(provName) {
-  document.getElementById('provView').style.display = 'none';
-  document.getElementById('cityView-Jatim').style.display = 'block';
-}
-
-function backToProv() {
-  document.getElementById('provView').style.display = 'block';
-  document.getElementById('cityView-Jatim').style.display = 'none';
-}
-
-function selectLocation(provKey, cityKey, labelText, iconClass, btn) {
-  currentProvince = provKey;
-  currentCity = cityKey;
-  document.getElementById('labelLocation').innerText = labelText;
-  if (iconClass) {
-    document.getElementById('iconLocation').className = iconClass + ' icon-left';
-  }
-  toggleMenu('locMenu');
-  backToProv();
-  renderCards();
-}
-
-// Modal Detail Tempat
 function openModal(id) {
-  const item = umkmData.find(d => d.id === id);
+  const item = umkmData.find(x => x.id === id);
   if (!item) return;
 
+  const modal = document.getElementById('detailModal');
   const modalBody = document.getElementById('modalBody');
-  const reviewHTML = item.reviews.map(r => `<div class="review-item">"${r}"</div>`).join('');
+
+  const reviewsHTML = item.reviews.map(r => `<li><i class="fa-solid fa-comment-dots"></i> "${r}"</li>`).join('');
 
   modalBody.innerHTML = `
-    <img src="${item.bgImage}" class="modal-banner" alt="${item.name}">
-    <div class="modal-details">
-      <div class="modal-meta">
-        <span class="card-badge">${item.category}</span>
-        <span class="rating-badge">${item.rating}</span>
-      </div>
-      <h2 style="font-size: 1.3rem; font-weight: 900; color:#fff;">${item.name}</h2>
-      <p class="modal-address"><i class="fa-solid fa-location-dot"></i> ${item.address}</p>
-      <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">${item.desc}</p>
+    <img src="${item.bgImage}" alt="${item.name}" class="modal-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
+    <div class="modal-content-padding">
+      <h2>${item.name}</h2>
+      <p class="modal-rating">${item.rating}</p>
+      <p class="modal-address"><i class="fa-solid fa-map-pin"></i> ${item.address}</p>
+      <p class="modal-desc">${item.desc}</p>
       
-      <div class="review-section">
-        <div class="review-title"><i class="fa-solid fa-comments"></i> 5 Ulasan Pengunjung:</div>
-        <div class="review-list">
-          ${reviewHTML}
-        </div>
+      <div class="modal-section">
+        <h4>Ulasan Pengunjung</h4>
+        <ul class="modal-reviews">${reviewsHTML}</ul>
       </div>
 
-      <div class="modal-actions">
-        <a href="${item.mapsUrl}" target="_blank" class="btn-action-maps">
-          <i class="fa-solid fa-map-location-dot"></i> Google Maps
-        </a>
-        <a href="${item.webUrl}" target="_blank" class="btn-action-web">
-          <i class="fa-solid fa-globe"></i> Sosmed / Web
-        </a>
+      <div class="modal-links">
+        <a href="${item.mapsUrl}" target="_blank" class="btn btn-maps"><i class="fa-solid fa-map-location-dot"></i> Buka Google Maps</a>
+        <a href="${item.webUrl}" target="_blank" class="btn btn-web"><i class="fa-brands fa-instagram"></i> Instagram Resmi</a>
       </div>
     </div>
   `;
 
-  document.getElementById('detailModal').classList.add('show');
+  modal.classList.add('active');
 }
 
 function closeModal() {
-  document.getElementById('detailModal').classList.remove('show');
+  const modal = document.getElementById('detailModal');
+  if (modal) modal.classList.remove('active');
 }
 
-// Inisialisasi Event Listener setelah DOM siap
-document.addEventListener('DOMContentLoaded', () => {
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value.toLowerCase();
-      renderCards();
-    });
-  }
+// ==========================================
+// [BLOK 4] FILTER & PENCARIAN
+// ==========================================
+function filterData() {
+  const categoryVal = document.getElementById('categoryFilter')?.value || 'all';
+  const locationVal = document.getElementById('locationFilter')?.value || 'all';
+  const searchVal = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
 
-  const detailModal = document.getElementById('detailModal');
-  if (detailModal) {
-    detailModal.addEventListener('click', (e) => {
-      if (e.target.id === 'detailModal') closeModal();
-    });
-  }
+  const filtered = umkmData.filter(item => {
+    const matchCategory = (categoryVal === 'all') || (item.category.toLowerCase() === categoryVal.toLowerCase());
+    const matchLocation = (locationVal === 'all') || (item.location.toLowerCase() === locationVal.toLowerCase());
+    const matchSearch = item.name.toLowerCase().includes(searchVal) || 
+                        item.desc.toLowerCase().includes(searchVal) ||
+                        item.address.toLowerCase().includes(searchVal);
 
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown-wrapper')) {
-      document.querySelectorAll('.dropdown-pop').forEach(m => m.classList.remove('show'));
-    }
+    return matchCategory && matchLocation && matchSearch;
   });
 
-  // Render kartu awal
-  renderCards();
+  renderCards(filtered);
+}
+
+// ==========================================
+// [BLOK 5] INITIALIZATION
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  renderCards(umkmData);
+
+  document.getElementById('categoryFilter')?.addEventListener('change', filterData);
+  document.getElementById('locationFilter')?.addEventListener('change', filterData);
+  document.getElementById('searchInput')?.addEventListener('input', filterData);
+
+  // Close modal when clicking outside content
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('detailModal');
+    if (e.target === modal) closeModal();
+  });
 });
+      
