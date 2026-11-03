@@ -78,7 +78,7 @@ const cafeMalangData = [
     ratingReviews: "(5.700+ ulasan)",
     address: "Jl. Joyo Agung No.1, Tlogomas, Lowokwaru, Kota Malang",
     desc: "Tempat nongkrong outdoor bernuansa romantis di dataran tinggi Malang dengan city light view.",
-    bgImage: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80",
+    bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80", // Diganti gambar cafe
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bukit+Delight+Malang",
     webUrl: "https://instagram.com/bukitdelight",
     likes: 520,
@@ -194,7 +194,7 @@ const cafeBatuData = [
     ratingReviews: "(2.500+ ulasan)",
     address: "Jl. Srigading No.10, Kaliputih, Desa Tulungrejo, Bumiaji, Kota Batu",
     desc: "Cafe vintage unik berkonsep eco-friendly penuh tanaman hias & ornamen daur ulang di dataran tinggi Batu.",
-    bgImage: "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?auto=format&fit=crop&w=800&q=80",
+    bgImage: "https://images.unsplash.com/photo-1463797221720-6b07e6426c24?auto=format&fit=crop&w=800&q=80", // Diganti gambar cafe
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Retrorika+Coffee+Bar+Resto+Batu",
     webUrl: "https://instagram.com/retrorika.id",
     likes: 412,
@@ -216,7 +216,7 @@ const cafeBatuData = [
     ratingReviews: "(6.000+ ulasan)",
     address: "Jl. Panglima Sudirman No.116, Pesanggrahan, Kota Batu",
     desc: "Cafe & resto outdoor legendaris di Batu dengan pemandangan langsung ke hamparan sawah & pegunungan.",
-    bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80", // Diganti gambar cafe
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pupuk+Bawang+Cafe+Dining+Batu",
     webUrl: "https://instagram.com/pupukbawangbatu",
     likes: 580,
@@ -238,7 +238,7 @@ const cafeBatuData = [
     ratingReviews: "(3.000+ ulasan)",
     address: "Jl. Gondorejo No.1, Oro-Oro Ombo, Kota Batu",
     desc: "Space nongkrong megah bernuansa tropis Mediterania dengan latar pemandangan Gunung Panderman.",
-    bgImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+    bgImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", // Diganti gambar resto
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Paolo+Fest+Batu",
     webUrl: "https://instagram.com/paolo.fest",
     likes: 490,
@@ -260,7 +260,7 @@ const cafeBatuData = [
     ratingReviews: "(1.200+ ulasan)",
     address: "Amarta Hills Hotel, Jl. Lucerne No.51, Ngaglik, Kota Batu",
     desc: "Rooftop skylounge mewah di lereng gunung Batu dengan pemandangan panoramic city light yang spektakuler.",
-    bgImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80",
+    bgImage: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=800&q=80", // Diganti gambar sky lounge
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Fifteen+Celcius+Skylounge+Batu",
     webUrl: "https://instagram.com/15celcius",
     likes: 340,
@@ -274,16 +274,20 @@ const cafeBatuData = [
   }
 ];
 
-// Combine Master Data
 const umkmData = [...cafeMalangData, ...cafeBatuData];
 
-// State Filter & Likes
+// State
 let selectedCategory = 'all';
 let selectedLocation = 'all';
 let savedLikes = JSON.parse(localStorage.getItem('bizsnap_likes')) || {};
 
+// Utility: Format Angka (1200 -> 1.2k)
+const formatNumber = (num) => {
+  return num >= 1000 ? (num / 1000).toFixed(1) + 'k' : num;
+};
+
 // ==========================================
-// [BLOK 2] RENDER KARTU DENGAN ANIMASI 90 FPS
+// [BLOK 2] RENDER KARTU (Anti-XSS & Cleaner)
 // ==========================================
 function renderCards(data) {
   const container = document.getElementById('umkmContainer');
@@ -293,9 +297,10 @@ function renderCards(data) {
 
   if (data.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; color: #94a3b8;">
-        <i class="fa-solid fa-store-slash" style="font-size: 2.8rem; margin-bottom: 12px; color: #64748b;"></i>
-        <p style="font-size: 0.9rem;">Tempat yang kamu cari tidak ditemukan.</p>
+      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #94a3b8; background: #1e293b; border-radius: 20px; border: 1px dashed #334155;">
+        <i class="fa-solid fa-store-slash" style="font-size: 3rem; margin-bottom: 16px; color: #475569;"></i>
+        <h3 style="color: #f8fafc; margin-bottom: 8px;">Tidak Ditemukan</h3>
+        <p style="font-size: 0.9rem;">Tempat yang kamu cari tidak ada. Coba kata kunci lain.</p>
       </div>
     `;
     return;
@@ -309,8 +314,11 @@ function renderCards(data) {
     card.className = 'umkm-card slide-in-left';
     card.style.animationDelay = `${index * 0.05}s`;
 
+    // Menggunakan data-attribute alih-alih inline onclick
     card.innerHTML = `
-      <img src="${item.bgImage}" alt="${item.name}" class="card-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
+      <div style="overflow: hidden;">
+        <img src="${item.bgImage}" alt="${item.name}" class="card-banner" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
+      </div>
       <div class="card-body">
         <div class="card-badge-group">
           <span class="badge category"><i class="fa-solid fa-mug-saucer"></i> ${item.category.toUpperCase()}</span>
@@ -324,11 +332,11 @@ function renderCards(data) {
         </div>
         <p class="card-desc">${item.desc}</p>
         <div class="card-actions">
-          <button class="btn btn-primary" onclick="openModal(${item.id})">
+          <button class="btn btn-primary btn-detail" data-id="${item.id}">
             <i class="fa-solid fa-eye"></i> Detail
           </button>
-          <button class="btn btn-like ${isLiked ? 'liked' : ''}" onclick="toggleLike(${item.id})">
-            <i class="fa-solid fa-heart"></i> ${totalLikes}
+          <button class="btn btn-like btn-toggle-like ${isLiked ? 'liked' : ''}" data-id="${item.id}" aria-label="Suka tempat ini">
+            <i class="fa-solid fa-heart"></i> <span>${formatNumber(totalLikes)}</span>
           </button>
         </div>
       </div>
@@ -338,7 +346,7 @@ function renderCards(data) {
 }
 
 // ==========================================
-// [BLOK 3] INTERAKSI LIKE & MODAL POPUP
+// [BLOK 3] INTERAKSI LIKE & MODAL
 // ==========================================
 function toggleLike(id) {
   if (savedLikes[id]) {
@@ -356,40 +364,39 @@ function openModal(id) {
 
   const modal = document.getElementById('detailModal');
   const modalBody = document.getElementById('modalBody');
-  if (!modal || !modalBody) return;
-
+  
   const reviewsHTML = item.reviews.map(r => `<li><i class="fa-solid fa-quote-left"></i> <span>"${r}"</span></li>`).join('');
 
   modalBody.innerHTML = `
     <img src="${item.bgImage}" alt="${item.name}" class="modal-banner" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';">
     <div class="modal-body-inner">
-      <h2 style="font-size: 1.25rem; font-weight: 800; color: #f8fafc; margin-bottom: 6px;">${item.name}</h2>
+      <h2 style="font-size: 1.4rem; font-weight: 800; color: #f8fafc; margin-bottom: 8px; letter-spacing: -0.5px;">${item.name}</h2>
       
-      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #fbbf24; margin-bottom: 10px;">
+      <div style="display: flex; align-items: center; gap: 6px; font-size: 0.9rem; color: #fbbf24; margin-bottom: 12px; font-weight: 600;">
         <i class="fa-solid fa-star"></i>
         <strong>${item.ratingScore}</strong>
-        <span style="color: #94a3b8;">${item.ratingReviews}</span>
+        <span style="color: #94a3b8; font-weight: 400;">${item.ratingReviews}</span>
       </div>
 
-      <p style="font-size: 0.82rem; color: #94a3b8; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 6px;">
+      <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;">
         <i class="fa-solid fa-map-pin" style="color: #38bdf8; margin-top: 3px;"></i>
         <span>${item.address}</span>
       </p>
 
-      <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 16px;">${item.desc}</p>
+      <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">${item.desc}</p>
       
-      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; margin-top: 14px;">
-        <h4 style="font-size: 0.85rem; font-weight: 700; color: #f8fafc; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+        <h4 style="font-size: 0.9rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
           <i class="fa-solid fa-comments" style="color: #38bdf8;"></i> Ulasan Pengunjung
         </h4>
         <ul class="modal-reviews-list">${reviewsHTML}</ul>
       </div>
 
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
-        <a href="${item.mapsUrl}" target="_blank" class="btn" style="flex:1; background: #0284c7; color: #fff; text-decoration: none;">
+      <div style="display: flex; gap: 12px; margin-top: 24px;">
+        <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn" style="flex:1; background: #0284c7; color: #fff; text-decoration: none;">
           <i class="fa-solid fa-map-location-dot"></i> Google Maps
         </a>
-        <a href="${item.webUrl}" target="_blank" class="btn" style="flex:1; background: rgba(225, 48, 108, 0.15); color: #e1306c; border: 1px solid rgba(225, 48, 108, 0.3); text-decoration: none;">
+        <a href="${item.webUrl}" target="_blank" rel="noopener noreferrer" class="btn" style="flex:1; background: rgba(225, 48, 108, 0.15); color: #e1306c; border: 1px solid rgba(225, 48, 108, 0.3); text-decoration: none;">
           <i class="fa-brands fa-instagram"></i> Instagram
         </a>
       </div>
@@ -397,15 +404,19 @@ function openModal(id) {
   `;
 
   modal.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Mencegah background scroll
 }
 
 function closeModal() {
   const modal = document.getElementById('detailModal');
-  if (modal) modal.classList.remove('active');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Kembalikan scroll
+  }
 }
 
 // ==========================================
-// [BLOK 4] LOGIKA FILTER & PENCARIAN
+// [BLOK 4] LOGIKA FILTER & DEBOUNCE
 // ==========================================
 function filterData() {
   const searchVal = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
@@ -423,62 +434,48 @@ function filterData() {
   renderCards(filtered);
 }
 
-// Setup Custom Dropdowns
-function setupCustomDropdowns() {
-  const setupDropdown = (dropdownId, labelId, onSelect) => {
-    const dropdown = document.getElementById(dropdownId);
-    const trigger = dropdown?.querySelector('.dropdown-trigger');
-    const label = document.getElementById(labelId);
-    const items = dropdown?.querySelectorAll('.dropdown-item');
-
-    trigger?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      document.querySelectorAll('.custom-dropdown').forEach(d => {
-        if (d !== dropdown) d.classList.remove('open');
-      });
-      dropdown.classList.toggle('open');
-    });
-
-    items?.forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        items.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        
-        if (label) label.textContent = item.textContent;
-        const val = item.getAttribute('data-value');
-        onSelect(val);
-        dropdown.classList.remove('open');
-        filterData();
-      });
-    });
+// Debounce Function (Optimasi Search)
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
   };
-
-  setupDropdown('dropdownCategory', 'categoryLabel', (val) => { selectedCategory = val; });
-  setupDropdown('dropdownLocation', 'locationLabel', (val) => { selectedLocation = val; });
-
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.custom-dropdown').forEach(d => d.classList.remove('open'));
-  });
 }
 
 // ==========================================
-// [BLOK 5] INITIALIZATION
+// [BLOK 5] INITIALIZATION & EVENT LISTENERS
 // ==========================================
 function initApp() {
   renderCards(umkmData);
   setupCustomDropdowns();
 
-  document.getElementById('searchInput')?.addEventListener('input', filterData);
+  // Event Delegation untuk Like & Detail (Lebih efisien dari onclick HTML)
+  document.getElementById('umkmContainer').addEventListener('click', (e) => {
+    const detailBtn = e.target.closest('.btn-detail');
+    const likeBtn = e.target.closest('.btn-toggle-like');
 
+    if (detailBtn) {
+      openModal(parseInt(detailBtn.dataset.id));
+    } else if (likeBtn) {
+      toggleLike(parseInt(likeBtn.dataset.id));
+    }
+  });
+
+  // Search dengan Debounce (tunggu 300ms setelah user berhenti ngetik)
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', debounce(filterData, 300));
+  }
+
+  // Tutup modal via klik background overlay
   window.addEventListener('click', (e) => {
     const modal = document.getElementById('detailModal');
     if (e.target === modal) closeModal();
   });
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initApp);
-} else {
-  initApp();
-}
+  // Tutup modal via tombol Escap
