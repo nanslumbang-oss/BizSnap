@@ -11,7 +11,7 @@ const cafeMalangData = [
     rating: "⭐ 4.9 (4.500+ Ulasan)",
     address: "Jl. Mayjend Panjaitan No.75, Klojen, Kota Malang",
     desc: "Cafe modern-minimalis favorit mahasiswa Malang dengan kopi variatif & vibes nugas 24/7.",
-    bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    bgImage: null, // Kosongkan biar diisi otomatis oleh Google Places API
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nakoa+Cafe+Panjaitan+Malang",
     webUrl: "https://instagram.com/nakoa.id",
     likes: 452,
@@ -300,15 +300,18 @@ function renderCards() {
     return;
   }
 
-  filtered.forEach(item => {
+    filtered.forEach(item => {
     const isLiked = savedLikes[item.id] || false;
     const totalLikes = item.likes + (isLiked ? 1 : 0);
+
+    // Fallback gambar jika bgImage masih null/proses loading
+    const imageSrc = item.bgImage || 'https://via.placeholder.com/800x450/1e293b/38bdf8?text=Loading+Foto+Google...';
 
     const card = document.createElement('div');
     card.className = 'umkm-card animated';
     card.innerHTML = `
-      <img src="${item.bgImage}" alt="${item.name}" class="card-banner">
-      <div class="card-body">
+      <img src="${imageSrc}" id="img-card-${item.id}" alt="${item.name}" class="card-banner">
+      <div class="card-body">      
         <div class="card-badge-group">
           <span class="card-badge">${item.category}</span>
           <span class="card-location"><i class="fa-solid fa-location-dot"></i> ${item.location}</span>
@@ -458,4 +461,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render kartu awal
   renderCards();
+});
+
+// ==========================================
+// [BLOK 4] TEST AUTOMATIC GOOGLE PLACES PHOTO (1 ITEM)
+// ==========================================
+function loadGooglePhotoForTestItem() {
+  const testItem = umkmData.find(d => d.id === 1); // Cek ID 1 (Nakoa Cafe)
+  if (!testItem || typeof google === 'undefined' || !google.maps || !google.maps.places) return;
+
+  const dummyElem = document.createElement('div');
+  const service = new google.maps.places.PlacesService(dummyElem);
+
+  const request = {
+    query: `${testItem.name} ${testItem.location}`,
+    fields: ['photos']
+  };
+
+  service.textSearch(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results[0] && results[0].photos) {
+      const googlePhotoUrl = results[0].photos[0].getUrl({ maxWidth: 800 });
+      testItem.bgImage = googlePhotoUrl;
+      
+      const imgElem = document.getElementById(`img-card-1`);
+      if (imgElem) {
+        imgElem.src = googlePhotoUrl;
+      }
+    }
+  });
+}
+
+// Panggil tes otomatis setelah halaman siap
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(loadGooglePhotoForTestItem, 1000);
 });
