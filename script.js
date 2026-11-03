@@ -1,7 +1,7 @@
 // ==========================================
-// [BLOK 1] DATA UMKM & STATE UTAMA
+// [BLOK 1A] DATA CAFE - MALANG
 // ==========================================
-const umkmData = [
+const cafeMalangData = [
   {
     id: 1,
     name: "Nakoa Cafe Panjaitan",
@@ -172,10 +172,104 @@ const umkmData = [
   }
 ];
 
-let currentCategory = 'all';
-let currentProvince = 'all';
-let currentCity = 'all';
-let searchQuery = '';
+// ==========================================
+// [BLOK 1B] DATA CAFE - BATU
+// ==========================================
+const cafeBatuData = [
+  {
+    id: 9,
+    name: "Retrorika Coffee Bar & Resto",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Batu",
+    rating: "⭐ 4.6 (2.500+ Ulasan)",
+    address: "Jl. Srigading No.10, Kaliputih, Desa Tulungrejo, Bumiaji, Kota Batu",
+    desc: "Cafe vintage unik berkonsep eco-friendly penuh tanaman hias & ornamen daur ulang di dataran tinggi Batu.",
+    bgImage: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Retrorika+Coffee+Bar+Resto+Batu",
+    webUrl: "https://instagram.com/retrorika.id",
+    likes: 412,
+    reviews: [
+      "Konsep barang antik dan tanaman hiasnya estetik parah!",
+      "Suasana Bumiaji yang sejuk bikin betah ngopi berjam-jam.",
+      "Sangat ramah lingkungan, tidak pakai sedotan plastik.",
+      "Makanan tradisional dan kopinya enak banget.",
+      "Banyak spot foto unik di setiap sudut cafe."
+    ]
+  },
+  {
+    id: 10,
+    name: "Pupuk Bawang Cafe & Dining",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Batu",
+    rating: "⭐ 4.5 (6.000+ Ulasan)",
+    address: "Jl. Panglima Sudirman No.116, Pesanggrahan, Kota Batu",
+    desc: "Cafe & resto outdoor legendaris di Batu dengan pemandangan langsung ke hamparan sawah & pegunungan.",
+    bgImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pupuk+Bawang+Cafe+Dining+Batu",
+    webUrl: "https://instagram.com/pupukbawangbatu",
+    likes: 580,
+    reviews: [
+      "View sawah dan gunungnya luar biasa indah pas sore hari.",
+      "Cocok banget buat tempat makan bareng keluarga.",
+      "Menu makanan Indonesian & Western-nya lezat.",
+      "Udara dingin khas Batu makin dapet pas malam hari.",
+      "Pelayanan cepat dan tempatnya sangat luas."
+    ]
+  },
+  {
+    id: 11,
+    name: "Paolo Fest Batu",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Batu",
+    rating: "⭐ 4.6 (3.000+ Ulasan)",
+    address: "Jl. Gondorejo No.1, Oro-Oro Ombo, Kota Batu",
+    desc: "Space nongkrong megah bernuansa tropis Mediterania dengan latar pemandangan Gunung Panderman.",
+    bgImage: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Paolo+Fest+Batu",
+    webUrl: "https://instagram.com/paolo.fest",
+    likes: 490,
+    reviews: [
+      "Vibes cafe-nya serasa lagi liburan di Bali tapi udaranya dingin.",
+      "Area outdoor-nya sangat luas dan megah.",
+      "Banyak pilihan mocktail segar dan makanan enak.",
+      "Live music-nya asik banget kalau malam minggu.",
+      "Spot foto arsitekturnya estetik dan kekinian."
+    ]
+  },
+  {
+    id: 12,
+    name: "Fifteen Celcius Skylounge",
+    category: "Cafe",
+    province: "Jawa Timur",
+    location: "Batu",
+    rating: "⭐ 4.5 (1.200+ Ulasan)",
+    address: "Amarta Hills Hotel, Jl. Lucerne No.51, Ngaglik, Kota Batu",
+    desc: "Rooftop skylounge mewah di lereng gunung Batu dengan pemandangan panoramic city light yang spektakuler.",
+    bgImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Fifteen+Celcius+Skylounge+Batu",
+    webUrl: "https://instagram.com/15celcius",
+    likes: 340,
+    reviews: [
+      "View pemandangan kota dari atas rooftop-nya terbaik di Batu!",
+      "Suasana sangat romantis buat dinner atau nongkrong malam.",
+      "Sesuai namanya, udaranya beneran dingin 15 derajat pas malam.",
+      "Kopi dan steak-nya kualitas hotel berbintang.",
+      "Pelayanan ramah dan tempatnya sangat eksklusif."
+    ]
+  }
+];
+
+// ==========================================
+// [BLOK 1C] GABUNGAN DATA & STATE UTAMA
+// ==========================================
+const umkmData = [
+  ...cafeMalangData,
+  ...cafeBatuData
+];
+
 
 // ==========================================
 // [BLOK 2] ELEMEN DOM
