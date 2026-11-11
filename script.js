@@ -887,9 +887,15 @@ function renderCards(data) {
 function toggleLike(id) {
   if (savedLikes[id]) delete savedLikes[id]; else savedLikes[id] = true;
   localStorage.setItem('bizsnap_likes', JSON.stringify(savedLikes));
-  filterData();
+  
+  // Cek apakah kita lagi ada di halaman favorit.html
+  if (window.location.pathname.includes('favorit.html')) {
+    const favoritesData = umkmData.filter(item => savedLikes[item.id] === true);
+    renderCards(favoritesData);
+  } else {
+    filterData();
+  }
 }
-
 function filterData() {
   const searchVal = document.getElementById('searchInput')?.value.toLowerCase().trim() || '';
   
@@ -1097,11 +1103,6 @@ function initApp() {
   if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
 }
   
-// ------------------------------------
-  
-// ------------------------------------
-  // ------------------------------------
-} // <--- INI KURUNG KURAWAL YANG KELUPAAN TADI BANG! UDAH DIBENERIN.
 
 // JALANKAN WEB
 if (document.readyState === 'loading') {
